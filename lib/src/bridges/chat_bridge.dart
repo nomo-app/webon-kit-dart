@@ -15,6 +15,7 @@ import 'package:web3dart/crypto.dart' as web3crypto;
 
 const String chatHomeServer = "https://zeniq.chat";
 const loginUrl = '$chatHomeServer/_matrix/client/v3/login';
+const registerUrl = chatHomeServer + '/_matrix/client/v3/register';
 
 @JS()
 external dynamic nomoLogIntoChat();
@@ -101,7 +102,55 @@ Future<UserMatrix?> _logIntoExistingChatAccountOrThrow(
 
     return userMatrix;
   }
-  return null;
+  return registerChatAccount(credentials);
+}
+
+Future<UserMatrix> registerChatAccount(credentials) async {
+  final address = credentials.address;
+  final String userName = address.toString();
+  final message =
+      userName + "_" + DateTime.now().millisecondsSinceEpoch.toString();
+  final publickey = toChecksumAddress(address.toString());
+  final String password = "0x" + _signWithEthereumAddress(credentials, message);
+
+  Map<String, dynamic> jsonData = {
+    'username': userName,
+    'message': message,
+    'publickey': publickey,
+    'password': password,
+  };
+
+  http.Response response = await HTTPService.client.post(
+    Uri.parse(registerUrl),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8'
+    },
+    body: jsonEncode(jsonData),
+  );
+  if (response.statusCode == 200) {
+    final String body = response.body;
+    final userMatrix = UserMatrix.fromJson(jsonDecode(body));
+    return userMatrix;
+  } else {
+    final String body = response.body;
+    return Future.error("register error - not 200");
+  }
+}
+
+String toChecksumAddress(String address) {
+  if (!address.startsWith("0x")) {
+    throw ArgumentError("not an EVM address");
+  }
+  final stripAddress = address.replaceFirst("0x", "").toLowerCase();
+  final Uint8List keccakHash = web3crypto.keccakUtf8(stripAddress);
+  final String keccakHashHex = convert.hex.encode(keccakHash);
+
+  String checksumAddress = "0x";
+  for (var i = 0; i < stripAddress.length; i++) {
+    final bool high = int.parse(keccakHashHex[i], radix: 16) >= 8;
+    checksumAddress += (high ? stripAddress[i].toUpperCase() : stripAddress[i]);
+  }
+  return checksumAddress;
 }
 
 Future<http.Response> _postChatLoginRequest(Credentials credentials) async {
