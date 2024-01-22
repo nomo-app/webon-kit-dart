@@ -1,16 +1,28 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# WebOn-Kit-Dart
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+This package is a Dart-implementation of the nomo-webon-kit.
+It is intended for WebOns that are implemented via Flutter-Web.
+See [nomo-webon-kit](https://github.com/nomo-app/nomo-webon-kit?tab=readme-ov-file#readme) for documentation.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+## How to integrate
 
-# Usage
+First, add this package as a Git-submodule by using Git-commands:
 
-This package is the dart implementation of the nomo-webon-kit.
+```
+git submodule add https://github.com/nomo-app/webon-kit-dart.git packages/webon-kit-dart
+```
+
+Next, expand your pubspec.yaml accordingly:
+
+```
+dependencies:
+    webon_kit_dart:
+        path: packages/webon-kit-dart
+```
+
+Afterwards, clone submodules with:
+
+```
+git submodule update --init --recursive
+```
+
