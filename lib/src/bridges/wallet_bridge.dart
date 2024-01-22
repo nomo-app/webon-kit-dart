@@ -1,0 +1,137 @@
+import 'package:js/js_util.dart';
+import 'package:js/js.dart';
+import 'package:webon_kit_dart/src/bridges/arguments/asset_arguments.dart';
+import 'package:webon_kit_dart/src/bridges/arguments/evm_message_arguments.dart';
+import 'package:webon_kit_dart/src/bridges/arguments/send_assets_arguments.dart';
+import 'package:webon_kit_dart/src/models/token.dart';
+
+@JS()
+external dynamic nomoGetVisibleAssets();
+
+@JS()
+external dynamic nomoSendAssets(NomoSendAssetsArguments args);
+
+@JS()
+external dynamic nomoGetBalance(AssetArguments args);
+
+@JS()
+external dynamic nomoGetAssetPrice(AssetArguments args);
+
+@JS()
+external dynamic nomoGetEvmAddress();
+
+@JS()
+external dynamic nomoSignEvmMessage(EvmMessageArguments args);
+
+typedef AssetPrice = Map<String, dynamic>;
+
+class WalletBridge {
+  static Future<List<Token>> getAssetsFromNomo() async {
+    final jsAssetsPromise = nomoGetVisibleAssets();
+
+    final futureAssets = promiseToFuture(jsAssetsPromise);
+
+    try {
+      final result = await futureAssets;
+      final resultAsMap = getProperty(result, 'visibleAssets');
+      List<Token> tokens = [];
+      resultAsMap.forEach((element) async {
+        var balance = getProperty(element, 'balance');
+        final assetArguments =
+            AssetArguments(symbol: getProperty(element, 'symbol'));
+        balance ??= await getBalance(assetArguments: assetArguments);
+        final token = Token(
+          name: getProperty(element, 'name'),
+          symbol: getProperty(element, 'symbol'),
+          decimals: getProperty(element, 'decimals'),
+          contractAddress: getProperty(element, 'contractAddress'),
+          balance: balance,
+          network: getProperty(element, 'network'),
+          receiveAddress: getProperty(element, 'receiveAddress'),
+        );
+        tokens.add(
+          token,
+        );
+      });
+
+      return tokens;
+    } catch (e) {
+      return [];
+    }
+  }
+
+  static Future<dynamic> sendAssets(
+      {required NomoSendAssetsArguments sendAssetsArguments}) async {
+    final jsSendAssetsPromise = nomoSendAssets(sendAssetsArguments);
+
+    final futureSendAssets = promiseToFuture(jsSendAssetsPromise);
+
+    try {
+      final result = await futureSendAssets;
+      return result;
+    } catch (e) {
+      throw Exception('no assets found: $e');
+    }
+  }
+
+  static Future<String> getBalance(
+      {required AssetArguments assetArguments}) async {
+    final jsBalancePromise = nomoGetBalance(assetArguments);
+
+    final futureBalance = promiseToFuture(jsBalancePromise);
+    try {
+      final result = await futureBalance;
+      final balanceString = getProperty(result, 'balance');
+
+      return balanceString;
+    } catch (e) {
+      return 'no balance found: $e';
+    }
+  }
+
+  static Future<AssetPrice> getAssetPrice(
+      {required AssetArguments assetArguments}) async {
+    final jsPricePromise = nomoGetAssetPrice(assetArguments);
+
+    final futurePrice = promiseToFuture(jsPricePromise);
+    try {
+      final result = await futurePrice;
+      final priceString = getProperty(result, 'price');
+      final currencyDisplayName = getProperty(result, 'currencyDisplayName');
+
+      return {
+        'price': priceString,
+        'currencyDisplayName': currencyDisplayName,
+      };
+    } catch (e) {
+      throw Exception('no price found: $e');
+    }
+  }
+
+  static Future<String> getEvmAddress() async {
+    final jsAddressPromise = nomoGetEvmAddress();
+    final futureAddress = promiseToFuture(jsAddressPromise);
+
+    try {
+      final result = await futureAddress;
+      return result;
+    } catch (e) {
+      return 'no address found: $e';
+    }
+  }
+
+  static Future<String> signEvmMessage(
+      {required EvmMessageArguments message}) async {
+    try {
+      final jsSignEvmPromise = nomoSignEvmMessage(message);
+
+      final futureSignMessage = promiseToFuture(jsSignEvmPromise);
+      final result = await futureSignMessage;
+      final signString = getProperty(result, 'sigHex');
+
+      return signString;
+    } catch (e) {
+      return 'Evm message signing failed: $e';
+    }
+  }
+}
