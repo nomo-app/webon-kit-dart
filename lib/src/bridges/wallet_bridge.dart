@@ -25,7 +25,25 @@ external dynamic nomoSignEvmMessage(EvmMessageArguments args);
 
 typedef AssetPrice = Map<String, dynamic>;
 
+@JS()
+external dynamic nomoGetMultiChainReceiveAddress(AssetArguments args);
+
 class WalletBridge {
+  static Future<dynamic> getMultiChainReceiveAddress(
+      {required AssetArguments assetArguments}) async {
+    final jsAddressPromise = nomoGetMultiChainReceiveAddress(assetArguments);
+
+    final futureAddress = promiseToFuture(jsAddressPromise);
+
+    try {
+      final result = await futureAddress;
+      final receiveAddress = getProperty(result, 'receiveAddress');
+      return receiveAddress;
+    } catch (e) {
+      return 'no address found: $e';
+    }
+  }
+
   static Future<List<Token>> getAssetsFromNomo() async {
     final jsAssetsPromise = nomoGetVisibleAssets();
 
