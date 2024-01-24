@@ -34,7 +34,23 @@ external dynamic nomoSetLocalStorageItem(String key, String value);
 @JS()
 external dynamic nomoGetLocalStorageItem(String key, String? options);
 
+@JS()
+external dynamic nomoLaunchUrl(UrlArguments args);
+
 class WalletBridge {
+  static Future<dynamic> launchUrl({required UrlArguments urlArguments}) async {
+    final jsLaunchUrlPromise = nomoLaunchUrl(urlArguments);
+
+    final futureLaunchUrl = promiseToFuture(jsLaunchUrlPromise);
+
+    try {
+      final result = await futureLaunchUrl;
+      return result;
+    } catch (e) {
+      return "not able to launch url: $e";
+    }
+  }
+
   static Future<dynamic> getMultiChainReceiveAddress(
       {required AssetArguments assetArguments}) async {
     final jsAddressPromise = nomoGetMultiChainReceiveAddress(assetArguments);
