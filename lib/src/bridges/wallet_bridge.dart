@@ -28,6 +28,12 @@ typedef AssetPrice = Map<String, dynamic>;
 @JS()
 external dynamic nomoGetMultiChainReceiveAddress(AssetArguments args);
 
+@JS()
+external dynamic nomoSetLocalStorageItem(String key, String value);
+
+@JS()
+external dynamic nomoGetLocalStorageItem(String key, String? options);
+
 class WalletBridge {
   static Future<dynamic> getMultiChainReceiveAddress(
       {required AssetArguments assetArguments}) async {
@@ -41,6 +47,34 @@ class WalletBridge {
       return receiveAddress;
     } catch (e) {
       return 'no address found: $e';
+    }
+  }
+
+  static Future<dynamic> setLocalStorage(
+      {required String key, required String value}) async {
+    final jsSetLocalStorage = nomoSetLocalStorageItem(key, value);
+
+    final futureSetLocalStorage = promiseToFuture(jsSetLocalStorage);
+
+    try {
+      final result = await futureSetLocalStorage;
+      return result;
+    } catch (e) {
+      return "not able to set item in local storage: $e";
+    }
+  }
+
+  static Future<dynamic> getLocalStorage(
+      {required String key, String? options}) async {
+    final jsGetLocalStorage = nomoGetLocalStorageItem(key, options);
+
+    final futureGetLocalStorage = promiseToFuture(jsGetLocalStorage);
+
+    try {
+      final result = await futureGetLocalStorage;
+      return result;
+    } catch (e) {
+      return "not able to get item from local storage: $e";
     }
   }
 
