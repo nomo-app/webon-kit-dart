@@ -15,7 +15,7 @@ import 'package:web3dart/crypto.dart' as web3crypto;
 
 const String chatHomeServer = "https://zeniq.chat";
 const loginUrl = '$chatHomeServer/_matrix/client/v3/login';
-const registerUrl = chatHomeServer + '/_matrix/client/v3/register';
+const registerUrl = '$chatHomeServer/_matrix/client/v3/register';
 
 @JS()
 external dynamic nomoLogIntoChat();
@@ -109,9 +109,9 @@ Future<UserMatrix> registerChatAccount(credentials) async {
   final address = credentials.address;
   final String userName = address.toString();
   final message =
-      userName + "_" + DateTime.now().millisecondsSinceEpoch.toString();
+      "${userName}_${DateTime.now().millisecondsSinceEpoch}";
   final publickey = toChecksumAddress(address.toString());
-  final String password = "0x" + _signWithEthereumAddress(credentials, message);
+  final String password = "0x${_signWithEthereumAddress(credentials, message)}";
 
   Map<String, dynamic> jsonData = {
     'username': userName,
@@ -132,7 +132,6 @@ Future<UserMatrix> registerChatAccount(credentials) async {
     final userMatrix = UserMatrix.fromJson(jsonDecode(body));
     return userMatrix;
   } else {
-    final String body = response.body;
     return Future.error("register error - not 200");
   }
 }

@@ -2,10 +2,9 @@ library webon_kit_dart;
 
 export 'package:webon_kit_dart/src/bridges/arguments/asset_arguments.dart';
 export 'package:webon_kit_dart/src/bridges/arguments/send_assets_arguments.dart';
-export 'package:webon_kit_dart/src/bridges/chat_bridge.dart';
-export 'package:webon_kit_dart/src/bridges/wallet_bridge.dart';
 export 'package:webon_kit_dart/src/models/token.dart';
 export 'package:webon_kit_dart/src/models/user_matrix.dart';
+export 'package:webon_kit_dart/src/models/url_launch_mode.dart';
 
 import 'package:webon_kit_dart/src/bridges/arguments/asset_arguments.dart';
 import 'package:webon_kit_dart/src/bridges/arguments/auth_message_arguments.dart';
@@ -13,8 +12,10 @@ import 'package:webon_kit_dart/src/bridges/arguments/evm_message_arguments.dart'
 import 'package:webon_kit_dart/src/bridges/arguments/send_assets_arguments.dart';
 import 'package:webon_kit_dart/src/bridges/auth_bridge.dart';
 import 'package:webon_kit_dart/src/bridges/chat_bridge.dart';
+import 'package:webon_kit_dart/src/bridges/theme_bridge.dart';
 import 'package:webon_kit_dart/src/bridges/wallet_bridge.dart';
 import 'package:webon_kit_dart/src/models/token.dart';
+import 'package:webon_kit_dart/src/models/url_launch_mode.dart';
 import 'package:webon_kit_dart/src/models/user_matrix.dart';
 
 /// A Calculator.
@@ -93,5 +94,36 @@ class WebonKitDart {
   /// Cannot be used outside the Nomo App.
   static Future<String> getChatAddress() async {
     return await ChatBridge.getMessengerAddress();
+  }
+
+  /// Launches a [url] with the [launchMode] provided
+  static Future<void> launchUrl(
+      {required String url,
+      required WebonKitDartUrlLaunchMode launchMode}) async {
+    final urlArguments = UrlArguments(url: url, launchMode: launchMode.name);
+    await WalletBridge.launchUrl(urlArguments: urlArguments);
+  }
+
+  /// Returns the receive address of [symbol]
+  static Future<String> getMultiChainReceiveAddress(
+      {required String symbol}) async {
+    final args = AssetArguments(symbol: symbol);
+    return await WalletBridge.getMultiChainReceiveAddress(assetArguments: args);
+  }
+
+  /// Sets a [key] and [value] in the local storage
+  static Future<void> setLocalStorage(
+      {required String key, required String value}) async {
+    await WalletBridge.setLocalStorage(key: key, value: value);
+  }
+
+  /// Returns the value of [key] from the local storage
+  static Future<dynamic> getLocalStorage({required String key}) async {
+    return await WalletBridge.getLocalStorage(key: key);
+  }
+
+  /// returns a map of the current app theme
+  static Future<Map<String, dynamic>> getCurrentAppTheme() async {
+    return await ThemeBridge.getAppTheme();
   }
 }
