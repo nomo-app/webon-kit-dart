@@ -14,13 +14,6 @@ dependencies:
     sdk: flutter
   js: ^0.6.7
 
-  walletkit_dart:
-    path: packages/walletkit-dart
-  bip39:
-    path: packages/walletkit-dart/packages/bip39
-  nomo_ui_kit:
-    path: packages/nomo-ui-kit
-  
 dev_dependencies:
   flutter_test:
     sdk: flutter

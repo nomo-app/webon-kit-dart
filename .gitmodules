@@ -1,7 +1,0 @@
-[submodule "packages/walletkit-dart"]
-	path = packages/walletkit-dart
-	url = https://github.com/nomo-app/walletkit-dart.git
-[submodule "packages/nomo-ui-kit"]
-	path = packages/nomo-ui-kit
-	url = https://github.com/nomo-app/nomo-ui-kit.git
-	branch = main

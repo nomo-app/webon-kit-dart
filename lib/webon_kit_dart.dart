@@ -36,9 +36,9 @@ class WebonKitDart {
   /// Logs into the Chat Server by calling the Nomo App function.
   /// If Webon is not launched within the Nomo App, falls in a fallback-mode and uses [fallbackString] for account creation.
   /// For fallback-mode, calling init with [fallbackString] beforehand is required.
-  static Future<UserMatrix> nomoChatLogin() async {
-    return await ChatBridge.getNomoLogin(fallbackString: _fallbackString);
-  }
+  // static Future<UserMatrix> nomoChatLogin() async {
+  //   return await ChatBridge.getNomoLogin(fallbackString: _fallbackString);
+  // }
 
   /// Returns the public EVM Address of the Nomo App
   /// If Webon is not launched within the Nomo App, returns a fallback-mode address.
@@ -96,9 +96,9 @@ class WebonKitDart {
 
   /// Returns the chat address
   /// Cannot be used outside the Nomo App.
-  static Future<String> getChatAddress() async {
-    return await ChatBridge.getMessengerAddress();
-  }
+  // static Future<String> getChatAddress() async {
+  //   return await ChatBridge.getMessengerAddress();
+  // }
 
   /// Launches a [url] with the [launchMode] provided
   static Future<void> launchUrl(
@@ -127,7 +127,7 @@ class WebonKitDart {
   }
 
   /// returns a map of the current app theme
-  static Future<NomoCurrentTheme?> getCurrentAppTheme() async {
-    return await ThemeBridge.getAppTheme();
-  }
+//   static Future<NomoCurrentTheme?> getCurrentAppTheme() async {
+//     return await ThemeBridge.getAppTheme();
+//   }
 }
