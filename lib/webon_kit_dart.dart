@@ -12,6 +12,7 @@ import 'package:webon_kit_dart/src/bridges/arguments/evm_message_arguments.dart'
 import 'package:webon_kit_dart/src/bridges/arguments/send_assets_arguments.dart';
 import 'package:webon_kit_dart/src/bridges/auth_bridge.dart';
 import 'package:webon_kit_dart/src/bridges/chat_bridge.dart';
+import 'package:webon_kit_dart/src/bridges/theme_bridge.dart';
 import 'package:webon_kit_dart/src/bridges/wallet_bridge.dart';
 import 'package:webon_kit_dart/src/models/token.dart';
 import 'package:webon_kit_dart/src/models/url_launch_mode.dart';
@@ -119,5 +120,10 @@ class WebonKitDart {
   /// Returns the value of [key] from the local storage
   static Future<dynamic> getLocalStorage({required String key}) async {
     return await WalletBridge.getLocalStorage(key: key);
+  }
+
+  /// returns a map of the current app theme
+  static Future<Map<String, dynamic>> getCurrentAppTheme() async {
+    return await ThemeBridge.getAppTheme();
   }
 }
