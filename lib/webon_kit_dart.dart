@@ -2,10 +2,9 @@ library webon_kit_dart;
 
 export 'package:webon_kit_dart/src/bridges/arguments/asset_arguments.dart';
 export 'package:webon_kit_dart/src/bridges/arguments/send_assets_arguments.dart';
-export 'package:webon_kit_dart/src/bridges/chat_bridge.dart';
-export 'package:webon_kit_dart/src/bridges/wallet_bridge.dart';
 export 'package:webon_kit_dart/src/models/token.dart';
 export 'package:webon_kit_dart/src/models/user_matrix.dart';
+export 'package:webon_kit_dart/src/models/url_launch_mode.dart';
 
 import 'package:webon_kit_dart/src/bridges/arguments/asset_arguments.dart';
 import 'package:webon_kit_dart/src/bridges/arguments/auth_message_arguments.dart';
@@ -15,6 +14,7 @@ import 'package:webon_kit_dart/src/bridges/auth_bridge.dart';
 import 'package:webon_kit_dart/src/bridges/chat_bridge.dart';
 import 'package:webon_kit_dart/src/bridges/wallet_bridge.dart';
 import 'package:webon_kit_dart/src/models/token.dart';
+import 'package:webon_kit_dart/src/models/url_launch_mode.dart';
 import 'package:webon_kit_dart/src/models/user_matrix.dart';
 
 /// A Calculator.
@@ -93,5 +93,13 @@ class WebonKitDart {
   /// Cannot be used outside the Nomo App.
   static Future<String> getChatAddress() async {
     return await ChatBridge.getMessengerAddress();
+  }
+
+  /// Launches a [url] with the [launchMode] provided
+  static Future<void> launchUrl(
+      {required String url,
+      required WebonKitDartUrlLaunchMode launchMode}) async {
+    final urlArguments = UrlArguments(url: url, launchMode: launchMode.name);
+    await WalletBridge.launchUrl(urlArguments: urlArguments);
   }
 }
