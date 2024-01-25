@@ -51,7 +51,7 @@ class WalletBridge {
     }
   }
 
-  static Future<dynamic> getMultiChainReceiveAddress(
+  static Future<String> getMultiChainReceiveAddress(
       {required AssetArguments assetArguments}) async {
     final jsAddressPromise = nomoGetMultiChainReceiveAddress(assetArguments);
 

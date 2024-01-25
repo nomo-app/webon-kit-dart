@@ -102,4 +102,22 @@ class WebonKitDart {
     final urlArguments = UrlArguments(url: url, launchMode: launchMode.name);
     await WalletBridge.launchUrl(urlArguments: urlArguments);
   }
+
+  /// Returns the receive address of [symbol]
+  static Future<String> getMultiChainReceiveAddress(
+      {required String symbol}) async {
+    final args = AssetArguments(symbol: symbol);
+    return await WalletBridge.getMultiChainReceiveAddress(assetArguments: args);
+  }
+
+  /// Sets a [key] and [value] in the local storage
+  static Future<void> setLocalStorage(
+      {required String key, required String value}) async {
+    await WalletBridge.setLocalStorage(key: key, value: value);
+  }
+
+  /// Returns the value of [key] from the local storage
+  static Future<dynamic> getLocalStorage({required String key}) async {
+    return await WalletBridge.getLocalStorage(key: key);
+  }
 }
