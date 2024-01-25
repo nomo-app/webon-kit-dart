@@ -63,6 +63,6 @@ class Token {
 
   @override
   String toString() {
-    return 'Token(name: $name)';
+    return 'Token(name: $name, symbol: $symbol, decimals: $decimals, contractAddress: $contractAddress, balance: $balance, network: $network, receiveAddress: $receiveAddress)';
   }
 }

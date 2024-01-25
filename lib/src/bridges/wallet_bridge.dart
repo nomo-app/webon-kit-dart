@@ -51,7 +51,7 @@ class WalletBridge {
     }
   }
 
-  static Future<dynamic> getMultiChainReceiveAddress(
+  static Future<String?> getMultiChainReceiveAddress(
       {required AssetArguments assetArguments}) async {
     final jsAddressPromise = nomoGetMultiChainReceiveAddress(assetArguments);
 
@@ -62,7 +62,7 @@ class WalletBridge {
       final receiveAddress = getProperty(result, 'receiveAddress');
       return receiveAddress;
     } catch (e) {
-      return 'no address found: $e';
+      return null;
     }
   }
 
@@ -124,6 +124,8 @@ class WalletBridge {
 
       return tokens;
     } catch (e) {
+      print("Failed to load tokens $e");
+
       return [];
     }
   }
@@ -138,6 +140,10 @@ class WalletBridge {
       final result = await futureSendAssets;
       return result;
     } catch (e) {
+      if (e.toString() ==
+          "the function nomoSendAssets does not work outside of the NOMO-app.") {
+        return "fallback";
+      }
       throw Exception('no assets found: $e');
     }
   }
