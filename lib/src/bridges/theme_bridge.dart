@@ -1,13 +1,14 @@
 import 'dart:js_util';
 
+import 'package:flutter/widgets.dart';
 import 'package:js/js.dart';
+import 'package:webon_kit_dart/src/models/nomo_theme.dart';
 
 @JS()
 external dynamic getCurrentNomoTheme();
 
 class ThemeBridge {
-  //TODO implement NomoThemeData
-  static Future<Map<String, dynamic>> getAppTheme() async {
+  static Future<NomoCurrentTheme?> getAppTheme() async {
     try {
       final jsGetThemePromise = getCurrentNomoTheme();
 
@@ -16,9 +17,11 @@ class ThemeBridge {
       if (result is! Map<String, dynamic>) {
         throw Exception("Theme is not a Map<String, dynamic>");
       }
-      return result;
+      final theme = NomoCurrentTheme.fromJson(result);
+      return theme;
     } catch (e) {
-      return {};
+      debugPrint(e.toString());
+      return null;
     }
   }
 }
