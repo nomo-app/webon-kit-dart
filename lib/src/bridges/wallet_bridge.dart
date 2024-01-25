@@ -4,6 +4,7 @@ import 'package:webon_kit_dart/src/bridges/arguments/asset_arguments.dart';
 import 'package:webon_kit_dart/src/bridges/arguments/evm_message_arguments.dart';
 import 'package:webon_kit_dart/src/bridges/arguments/send_assets_arguments.dart';
 import 'package:webon_kit_dart/src/models/token.dart';
+import 'package:webon_kit_dart/webon_kit_dart.dart';
 
 @JS()
 external dynamic nomoGetVisibleAssets();
@@ -22,8 +23,6 @@ external dynamic nomoGetEvmAddress();
 
 @JS()
 external dynamic nomoSignEvmMessage(EvmMessageArguments args);
-
-typedef AssetPrice = Map<String, dynamic>;
 
 @JS()
 external dynamic nomoGetMultiChainReceiveAddress(AssetArguments args);

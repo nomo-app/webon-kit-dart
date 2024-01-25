@@ -18,6 +18,8 @@ import 'package:webon_kit_dart/src/models/token.dart';
 import 'package:webon_kit_dart/src/models/url_launch_mode.dart';
 import 'package:webon_kit_dart/src/models/user_matrix.dart';
 
+typedef AssetPrice = Map<String, dynamic>;
+
 /// A Calculator.
 class WebonKitDart {
   /// [fallbackString] is used for account creation when Webon is not launched within the Nomo App.
@@ -105,7 +107,7 @@ class WebonKitDart {
   }
 
   /// Returns the receive address of [symbol]
-  static Future<String> getMultiChainReceiveAddress(
+  static Future<String?> getMultiChainReceiveAddress(
       {required String symbol}) async {
     final args = AssetArguments(symbol: symbol);
     return await WalletBridge.getMultiChainReceiveAddress(assetArguments: args);
