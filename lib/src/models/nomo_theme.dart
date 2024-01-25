@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:nomo_ui_kit/theme/sub/nomo_color_theme.dart';
 
 class NomoCurrentTheme {
@@ -25,5 +26,24 @@ class NomoCurrentTheme {
       'displayname': displayname,
       'colors': colors.toJson(),
     };
+  }
+
+  ThemeData get materialTheme {
+    return ThemeData(
+      primaryColor: colors.primary,
+      colorScheme: ColorScheme(
+        primary: colors.primary,
+        secondary: colors.secondary,
+        background: colors.background1,
+        surface: colors.surface,
+        onBackground: colors.foreground1,
+        onSurface: colors.foreground1,
+        onPrimary: colors.onPrimary,
+        onSecondary: colors.onSecondary,
+        brightness: colors.brightness,
+        error: colors.error,
+        onError: colors.foreground1,
+      ),
+    );
   }
 }
