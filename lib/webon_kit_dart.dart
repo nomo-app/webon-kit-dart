@@ -48,7 +48,7 @@ class WebonKitDart {
 
   /// Send Assets to [targetAddress] with [amount] of [symbol]
   /// Cannot be used outside the Nomo App.
-  static Future<dynamic> sendAssets(
+  static Future<String> sendAssets(
       {required String amount,
       required String targetAddress,
       required String symbol}) async {

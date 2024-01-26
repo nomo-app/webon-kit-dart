@@ -129,7 +129,7 @@ class WalletBridge {
     }
   }
 
-  static Future<dynamic> sendAssets(
+  static Future<String> sendAssets(
       {required NomoSendAssetsArguments sendAssetsArguments}) async {
     final jsSendAssetsPromise = nomoSendAssets(sendAssetsArguments);
 
@@ -137,7 +137,8 @@ class WalletBridge {
 
     try {
       final result = await futureSendAssets;
-      return result;
+      final hash = getProperty(result, 'hash');
+      return hash;
     } catch (e) {
       if (e.toString() ==
           "the function nomoSendAssets does not work outside of the NOMO-app.") {
