@@ -13,9 +13,7 @@ import 'package:webon_kit_dart/src/bridges/arguments/evm_message_arguments.dart'
 import 'package:webon_kit_dart/src/bridges/arguments/send_assets_arguments.dart';
 import 'package:webon_kit_dart/src/bridges/auth_bridge.dart';
 import 'package:webon_kit_dart/src/bridges/chat_bridge.dart';
-import 'package:webon_kit_dart/src/bridges/theme_bridge.dart';
 import 'package:webon_kit_dart/src/bridges/wallet_bridge.dart';
-import 'package:webon_kit_dart/src/models/nomo_theme.dart';
 import 'package:webon_kit_dart/src/models/token.dart';
 import 'package:webon_kit_dart/src/models/url_launch_mode.dart';
 import 'package:webon_kit_dart/src/models/user_matrix.dart';
@@ -24,21 +22,11 @@ typedef AssetPrice = Map<String, dynamic>;
 
 /// A Calculator.
 class WebonKitDart {
-  /// [fallbackString] is used for account creation when Webon is not launched within the Nomo App.
-  /// You can use your mnemonic phrase or any other String here.
-  /// [fallbackString] should be unique
-  static String? _fallbackString;
-
-  static void initFallback({String? fallbackString}) {
-    _fallbackString = fallbackString;
-  }
 
   /// Logs into the Chat Server by calling the Nomo App function.
-  /// If Webon is not launched within the Nomo App, falls in a fallback-mode and uses [fallbackString] for account creation.
-  /// For fallback-mode, calling init with [fallbackString] beforehand is required.
-  // static Future<UserMatrix> nomoChatLogin() async {
-  //   return await ChatBridge.getNomoLogin(fallbackString: _fallbackString);
-  // }
+  static Future<UserMatrix> nomoChatLogin() async {
+    return await ChatBridge.getNomoLogin();
+  }
 
   /// Returns the public EVM Address of the Nomo App
   /// If Webon is not launched within the Nomo App, returns a fallback-mode address.
