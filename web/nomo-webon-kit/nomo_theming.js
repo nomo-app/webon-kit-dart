@@ -52,28 +52,54 @@ function capitalizeFirstLetter(inputString) {
         return inputString;
     return inputString.charAt(0).toUpperCase() + inputString.slice(1);
 }
+
 const lightTheme = {
     name: "LIGHT",
     displayName: "Nomo Light",
     colors: {
-        primary: "#bca570ff",
-        onPrimary: "#ffffffff",
-        primaryContainer: "#fcfaf7ff",
-        secondary: "#d1af72ff",
-        onSecondary: "#000000ff",
-        secondaryContainer: "#e6d0a3ff",
-        background: "#f5f5f5ff",
-        surface: "#ffffffff",
-        foreground1: "#000000cf",
-        foreground2: "#000000df",
-        foreground3: "#000000ef",
-        snackBarColor: "#fff7e5ff",
-        disabledColor: "#e0e0e0ff",
-        error: "#ff5252ff",
-        settingsTileColor: "#ffffffff",
-        settingsColumnColor: "#edededff",
-    },
-};
+        primary: "#bca570",
+        brightness: 1,
+        onPrimary: "#ffffff",
+        primaryContainer: "#fcfaf7",
+        secondary: "#d1af72",
+        onSecondary: "#000000",
+        secondaryContainer: "#e6d0a3",
+        background1: "#f5f5f5",
+        background2: "#f0f0f0",
+        background3: "#e6e6e6",
+        surface: "#ffffff",
+        error: "#ff5252",
+        disabled: "#e0e0e0",
+        onDisabled: "#9e9e9e",
+        foreground1: "#cf000000",
+        foreground2: "#df000000",
+        foreground3: "#ef000000"
+    }
+
+}
+
+// const lightTheme = {
+//     name: "LIGHT",
+//     displayName: "Nomo Light",
+//     colors: {
+//         primary: "#bca570ff",
+//         onPrimary: "#ffffffff",
+//         primaryContainer: "#fcfaf7ff",
+//         secondary: "#d1af72ff",
+//         onSecondary: "#000000ff",
+//         secondaryContainer: "#e6d0a3ff",
+//         background: "#f5f5f5ff",
+//         surface: "#ffffffff",
+//         foreground1: "#000000cf",
+//         foreground2: "#000000df",
+//         foreground3: "#000000ef",
+//         snackBarColor: "#fff7e5ff",
+//         disabledColor: "#e0e0e0ff",
+//         error: "#ff5252ff",
+//         settingsTileColor: "#ffffffff",
+//         settingsColumnColor: "#edededff",
+//     },
+// };
 const darkTheme = {
     name: "DARK",
     displayName: "Nomo Dark",
@@ -166,3 +192,5 @@ function convertFlutterColorIntoCSSColor(flutterColor) {
     }
     return "#" + cssColor;
 }
+
+window.getCurrentNomoTheme = getCurrentNomoTheme;

@@ -13,6 +13,7 @@ import 'package:webon_kit_dart/src/bridges/arguments/evm_message_arguments.dart'
 import 'package:webon_kit_dart/src/bridges/arguments/send_assets_arguments.dart';
 import 'package:webon_kit_dart/src/bridges/auth_bridge.dart';
 import 'package:webon_kit_dart/src/bridges/chat_bridge.dart';
+import 'package:webon_kit_dart/src/bridges/theme_bridge.dart';
 import 'package:webon_kit_dart/src/bridges/wallet_bridge.dart';
 import 'package:webon_kit_dart/src/models/token.dart';
 import 'package:webon_kit_dart/src/models/url_launch_mode.dart';
@@ -22,7 +23,6 @@ typedef AssetPrice = Map<String, dynamic>;
 
 /// A Calculator.
 class WebonKitDart {
-
   /// Logs into the Chat Server by calling the Nomo App function.
   static Future<UserMatrix> nomoChatLogin() async {
     return await ChatBridge.getNomoLogin();
@@ -115,7 +115,7 @@ class WebonKitDart {
   }
 
   /// returns a map of the current app theme
-//   static Future<NomoCurrentTheme?> getCurrentAppTheme() async {
-//     return await ThemeBridge.getAppTheme();
-//   }
+  static Future<Map<String, dynamic>> getCurrentAppTheme() async {
+    return await ThemeBridge.getAppTheme();
+  }
 }
