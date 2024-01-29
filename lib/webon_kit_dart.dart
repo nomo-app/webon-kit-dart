@@ -15,6 +15,7 @@ import 'package:webon_kit_dart/src/bridges/auth_bridge.dart';
 import 'package:webon_kit_dart/src/bridges/chat_bridge.dart';
 import 'package:webon_kit_dart/src/bridges/theme_bridge.dart';
 import 'package:webon_kit_dart/src/bridges/wallet_bridge.dart';
+import 'package:webon_kit_dart/src/models/nomo_theme.dart';
 import 'package:webon_kit_dart/src/models/token.dart';
 import 'package:webon_kit_dart/src/models/url_launch_mode.dart';
 import 'package:webon_kit_dart/src/models/user_matrix.dart';
@@ -115,7 +116,7 @@ class WebonKitDart {
   }
 
   /// returns a map of the current app theme
-  static Future<Map<String, dynamic>> getCurrentAppTheme() async {
+  static Future<NomoTheme> getCurrentAppTheme() async {
     return await ThemeBridge.getAppTheme();
   }
 }

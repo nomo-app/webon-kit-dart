@@ -2,12 +2,13 @@ import 'dart:js_util';
 
 import 'package:flutter/widgets.dart';
 import 'package:js/js.dart';
+import 'package:webon_kit_dart/webon_kit_dart.dart';
 
 @JS()
 external dynamic getCurrentNomoTheme();
 
 class ThemeBridge {
-  static Future<Map<String, dynamic>> getAppTheme() async {
+  static Future<NomoTheme> getAppTheme() async {
     try {
       final jsGetThemePromise = getCurrentNomoTheme();
 
@@ -59,10 +60,10 @@ class ThemeBridge {
         }
       };
 
-      return theme;
+      return NomoTheme.fromJson(theme);
     } catch (e) {
       debugPrint(e.toString());
-      return {};
+      rethrow;
     }
   }
 }
