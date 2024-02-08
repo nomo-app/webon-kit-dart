@@ -1,10 +1,8 @@
 import 'package:js/js_util.dart';
 import 'package:js/js.dart';
-import 'package:webon_kit_dart/src/bridges/arguments/asset_arguments.dart';
 import 'package:webon_kit_dart/src/bridges/arguments/evm_message_arguments.dart';
-import 'package:webon_kit_dart/src/bridges/arguments/send_assets_arguments.dart';
-import 'package:webon_kit_dart/src/models/token.dart';
 import 'package:webon_kit_dart/webon_kit_dart.dart';
+import 'package:webon_kit_dart/src/bridges/arguments/callback_arguments.dart';
 
 @JS()
 external dynamic nomoGetVisibleAssets();
@@ -34,9 +32,25 @@ external dynamic nomoSetLocalStorageItem(String key, String value);
 external dynamic nomoGetLocalStorageItem(String key, String? options);
 
 @JS()
+external dynamic nomoRegisterOnWebOnVisible(CardModeCallback callback);
+
+@JS()
 external dynamic nomoLaunchUrl(UrlArguments args);
 
 class WalletBridge {
+  static Future<void> registerOnWebOnVisible(
+      {required CardModeCallback callback}) async {
+    final jsRegisterOnWebOnVisible =
+        nomoRegisterOnWebOnVisible(allowInterop(callback));
+    final futureRegisterOnWebOnVisible =
+        promiseToFuture(jsRegisterOnWebOnVisible);
+    try {
+      await futureRegisterOnWebOnVisible;
+    } catch (e) {
+      throw Exception('not able to register on webon visible: $e');
+    }
+  }
+
   static Future<dynamic> launchUrl({required UrlArguments urlArguments}) async {
     final jsLaunchUrlPromise = nomoLaunchUrl(urlArguments);
 

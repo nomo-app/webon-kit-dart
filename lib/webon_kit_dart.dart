@@ -19,6 +19,7 @@ import 'package:webon_kit_dart/src/models/nomo_theme.dart';
 import 'package:webon_kit_dart/src/models/token.dart';
 import 'package:webon_kit_dart/src/models/url_launch_mode.dart';
 import 'package:webon_kit_dart/src/models/user_matrix.dart';
+import 'package:webon_kit_dart/src/bridges/arguments/callback_arguments.dart';
 
 typedef AssetPrice = Map<String, dynamic>;
 
@@ -118,5 +119,12 @@ class WebonKitDart {
   /// returns a map of the current app theme
   static Future<NomoTheme> getCurrentAppTheme() async {
     return await ThemeBridge.getAppTheme();
+  }
+
+  /// Registers a callback to be called when the Nomo App is visible
+
+  static Future<void> registerOnWebOnVisible(
+      {required CardModeCallback callBack}) async {
+    await WalletBridge.registerOnWebOnVisible(callback: callBack);
   }
 }
