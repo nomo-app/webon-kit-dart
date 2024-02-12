@@ -13,9 +13,11 @@ import 'package:webon_kit_dart/src/bridges/arguments/evm_message_arguments.dart'
 import 'package:webon_kit_dart/src/bridges/arguments/send_assets_arguments.dart';
 import 'package:webon_kit_dart/src/bridges/auth_bridge.dart';
 import 'package:webon_kit_dart/src/bridges/chat_bridge.dart';
+import 'package:webon_kit_dart/src/bridges/platform_bridge.dart';
 import 'package:webon_kit_dart/src/bridges/theme_bridge.dart';
 import 'package:webon_kit_dart/src/bridges/wallet_bridge.dart';
 import 'package:webon_kit_dart/src/models/nomo_theme.dart';
+import 'package:webon_kit_dart/src/models/platform_infos.dart';
 import 'package:webon_kit_dart/src/models/token.dart';
 import 'package:webon_kit_dart/src/models/url_launch_mode.dart';
 import 'package:webon_kit_dart/src/models/user_matrix.dart';
@@ -122,9 +124,29 @@ class WebonKitDart {
   }
 
   /// Registers a callback to be called when the Nomo App is visible
-
   static Future<void> registerOnWebOnVisible(
       {required CardModeCallback callBack}) async {
     await WalletBridge.registerOnWebOnVisible(callback: callBack);
+  }
+
+  /// returns a List of Device-Hashes
+  static Future<List<String>> getDeviceHashes() async {
+    final String hashes = await PlatformBridge.getDeviceHashes();
+    return hashes.split(',');
+  }
+
+  /// returns the Name of the Device
+  static Future<String> getDeviceName() async {
+    return await PlatformBridge.getDeviceName();
+  }
+
+  /// returns Platform Infos of the Nomo App
+  static Future<NomoPlatformInfos> getPlatformInfos() async {
+    return await PlatformBridge.getPlatformInfo();
+  }
+
+  /// returns the Language-Code of the Nomo App (e.g. en)
+  static Future<String> getLanguage() async {
+    return await PlatformBridge.getLanguage();
   }
 }
