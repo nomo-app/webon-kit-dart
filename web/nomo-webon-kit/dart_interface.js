@@ -64,13 +64,11 @@ const moduleID = Array.from({ length: 8 }, () => String.fromCharCode(Math.floor(
 export async function invokeNomoFunction(functionName, args) {
     invocationCounter++;
     const invocationID = invocationCounter.toString() + "_" + functionName + "_" + moduleID;
-    console.log('Invoke Args: ',args)
     const payload = JSON.stringify({
         functionName,
         invocationID,
         args,
     });
-    console.log('Invoke Payload: ',payload)
     if (typeof window === "undefined") {
         return Promise.reject(`the function ${functionName} does not work in NodeJS/CommonJS.`);
     }
