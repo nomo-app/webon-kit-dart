@@ -160,4 +160,4 @@ export const nomoLocalStorage = {
 
 window.nomoSetLocalStorageItem = nomoLocalStorage.setItem;
 window.nomoGetLocalStorageItem = nomoLocalStorage.getItem;
-window.nomoSetLocalStorageItem = nomoLocalStorage.removeItem;
+window.nomoRemoveLocalStorageItem = nomoLocalStorage.removeItem;

@@ -26,10 +26,13 @@ external dynamic nomoSignEvmMessage(EvmMessageArguments args);
 external dynamic nomoGetMultiChainReceiveAddress(AssetArguments args);
 
 @JS()
-external dynamic nomoSetLocalStorageItem(String key, String value);
+external dynamic nomoSetLocalStorageItem(String key, dynamic value);
 
 @JS()
 external dynamic nomoGetLocalStorageItem(String key, String? options);
+
+@JS()
+external dynamic nomoRemoveLocalStorageItem(String key);
 
 @JS()
 external dynamic nomoRegisterOnWebOnVisible(CardModeCallback callback);
@@ -105,6 +108,14 @@ class WalletBridge {
     } catch (e) {
       return "not able to get item from local storage: $e";
     }
+  }
+
+  static Future<void> removeLocalStorage({required String key}) async {
+    final jsGetLocalStorage = nomoRemoveLocalStorageItem(key);
+
+    final futureGetLocalStorage = promiseToFuture(jsGetLocalStorage);
+
+    await futureGetLocalStorage;
   }
 
   static Future<List<Token>> getAssetsFromNomo() async {

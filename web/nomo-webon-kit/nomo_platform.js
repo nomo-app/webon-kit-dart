@@ -167,3 +167,4 @@ window.nomoGetLanguage = nomoGetLanguage;
 window.nomoGetPlatformInfo = nomoGetPlatformInfo;
 window.nomoGetDeviceHashes = nomoGetDeviceHashes;
 window.nomoGetDeviceName = nomoGetDeviceName;
+window.nomoRegisterOnWebOnVisible = nomoRegisterOnWebOnVisible
