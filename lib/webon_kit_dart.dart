@@ -110,7 +110,7 @@ class WebonKitDart {
   /// Sets a [key] and [value] in the local storage
   /// You need to add this function to the nomo_multi_webons.js file
   static Future<void> setLocalStorage(
-      {required String key, required dynamic value}) async {
+      {required String key, required String value}) async {
     await WalletBridge.setLocalStorage(key: key, value: value);
   }
 
