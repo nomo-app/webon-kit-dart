@@ -7,6 +7,7 @@ export 'package:webon_kit_dart/src/models/user_matrix.dart';
 export 'package:webon_kit_dart/src/models/url_launch_mode.dart';
 export 'package:webon_kit_dart/src/models/nomo_theme.dart';
 
+import 'package:nomo_ui_kit/theme/sub/nomo_color_theme.dart';
 import 'package:webon_kit_dart/src/bridges/arguments/asset_arguments.dart';
 import 'package:webon_kit_dart/src/bridges/arguments/auth_message_arguments.dart';
 import 'package:webon_kit_dart/src/bridges/arguments/evm_message_arguments.dart';
@@ -156,5 +157,10 @@ class WebonKitDart {
   /// returns the Language-Code of the Nomo App (e.g. en)
   static Future<String> getLanguage() async {
     return await PlatformBridge.getLanguage();
+  }
+
+  // set the colors of the Nomo App Theme
+  static Future<dynamic> setColors(NomoColors colors) async {
+    return await ThemeBridge.setColors(colors);
   }
 }
