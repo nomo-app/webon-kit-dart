@@ -96,8 +96,12 @@ export async function nomoGetWalletAddresses() {
   if (isFallbackModeActive()) {
     return {
       walletAddresses: {
-        ETH: "0xF1cA9cb74685755965c7458528A36934Df52A3EF",
-        ZENIQ: "meXd5DAdJYadrgssPVY9sTu1Z1YNJGH9R3",
+        ETH: "0x18698f662cf75a539754b9aadaac0d0aeca48f2f",
+        ZENIQ: "mMhxgh4HsQPzJBGChXHTTTPgVZorHTTcnu",
+        BTC: "16XcNkGbmZRcLVvg1NeQ7fT9G5U65cPttR",
+        LTC: "ltc1qjklfx8kln8agmfv96m9n3xrjz5daq5gj24skxa",
+        EURO: "c6w63CCfYFjqVD4D8sd8Ja8b1xt9tzuoop",
+        BCH: "bitcoincash:qq729gey4rh2f0jnqqndq7mm4lmmsyhuyya3wlyl2z",
       },
     };
   }

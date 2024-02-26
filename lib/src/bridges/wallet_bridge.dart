@@ -235,9 +235,17 @@ class WalletBridge {
       final address = getProperty(result, 'walletAddresses');
       final eth = getProperty(address, 'ETH');
       final zeniq = getProperty(address, 'ZENIQ');
+      final btc = getProperty(address, 'BTC');
+      final ltc = getProperty(address, 'LTC');
+      final bch = getProperty(address, 'BCH');
+      final euro = getProperty(address, 'EURO');
       final walletInfo = WalletInfo(
         evmAddress: eth,
         zeniqAddress: zeniq,
+        btcAddress: btc,
+        litecoinAddress: ltc,
+        bitcoinCashAddress: bch,
+        eurocoinAddress: euro,
       );
       return walletInfo;
     } catch (e) {
