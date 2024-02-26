@@ -173,6 +173,24 @@ class WebonKitDart {
     return await PlatformBridge.getLanguage();
   }
 
+  static String? getAddressForSymbol(
+      {required WalletInfo addresses, required String symbol}) {
+    switch (symbol) {
+      case 'BTC':
+        return addresses.btcAddress;
+      case 'BCH':
+        return addresses.bitcoinCashAddress;
+      case 'LTC':
+        return addresses.litecoinAddress;
+      case 'ZENIQ Coin':
+        return addresses.zeniqAddress;
+      case 'EURO':
+        return addresses.btcAddress;
+      default:
+        return addresses.evmAddress;
+    }
+  }
+
   // set the colors of the Nomo App Theme
   // static Future<dynamic> setColors(NomoColors colors) async {
   //   return await ThemeBridge.setColors(colors);
