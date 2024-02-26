@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:js_util';
 import 'package:flutter/widgets.dart';
 import 'package:js/js.dart';
-import 'package:nomo_ui_kit/theme/sub/nomo_color_theme.dart';
+// import 'package:nomo_ui_kit/theme/sub/nomo_color_theme.dart';
 import 'package:webon_kit_dart/webon_kit_dart.dart';
 import 'package:webon_kit_dart/src/bridges/arguments/color_arguments.dart';
 
@@ -68,15 +68,15 @@ class ThemeBridge {
     }
   }
 
-  static Future<dynamic> setColors(NomoColors colors) async {
-    try {
-      final jsColors = colors.toJson();
+  // static Future<dynamic> setColors(NomoColors colors) async {
+  //   try {
+  //     final jsColors = colors.toJson();
 
-      final colorArgs = ColorArguments(colors: jsColors.toString());
+  //     final colorArgs = ColorArguments(colors: jsColors.toString());
 
-      return await setNomoColors(colorArgs);
-    } catch (e) {
-      debugPrint(e.toString());
-    }
-  }
+  //     return await setNomoColors(colorArgs);
+  //   } catch (e) {
+  //     debugPrint(e.toString());
+  //   }
+  // }
 }

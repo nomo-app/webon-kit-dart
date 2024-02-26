@@ -7,7 +7,7 @@ export 'package:webon_kit_dart/src/models/user_matrix.dart';
 export 'package:webon_kit_dart/src/models/url_launch_mode.dart';
 export 'package:webon_kit_dart/src/models/nomo_theme.dart';
 
-import 'package:nomo_ui_kit/theme/sub/nomo_color_theme.dart';
+// import 'package:nomo_ui_kit/theme/sub/nomo_color_theme.dart';
 import 'package:webon_kit_dart/src/bridges/arguments/asset_arguments.dart';
 import 'package:webon_kit_dart/src/bridges/arguments/auth_message_arguments.dart';
 import 'package:webon_kit_dart/src/bridges/arguments/evm_message_arguments.dart';
@@ -23,6 +23,7 @@ import 'package:webon_kit_dart/src/models/token.dart';
 import 'package:webon_kit_dart/src/models/url_launch_mode.dart';
 import 'package:webon_kit_dart/src/models/user_matrix.dart';
 import 'package:webon_kit_dart/src/bridges/arguments/callback_arguments.dart';
+import 'package:webon_kit_dart/src/models/wallet_info.dart';
 
 typedef AssetPrice = Map<String, dynamic>;
 
@@ -37,6 +38,12 @@ class WebonKitDart {
   /// If Webon is not launched within the Nomo App, returns a fallback-mode address.
   static Future<String> getEvmAddress() async {
     return await WalletBridge.getEvmAddress();
+  }
+
+  /// Returns all public wallet addresses of the user
+  /// If Webon is not launched within the Nomo App, returns a fallback-mode address.
+  static Future<WalletInfo?> getWalletAddresses() async {
+    return await WalletBridge.getWalletAddresses();
   }
 
   /// Send Assets to [targetAddress] with [amount] of [symbol]
@@ -160,7 +167,7 @@ class WebonKitDart {
   }
 
   // set the colors of the Nomo App Theme
-  static Future<dynamic> setColors(NomoColors colors) async {
-    return await ThemeBridge.setColors(colors);
-  }
+  // static Future<dynamic> setColors(NomoColors colors) async {
+  //   return await ThemeBridge.setColors(colors);
+  // }
 }

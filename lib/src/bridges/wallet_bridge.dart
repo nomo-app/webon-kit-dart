@@ -1,6 +1,7 @@
 import 'package:js/js_util.dart';
 import 'package:js/js.dart';
 import 'package:webon_kit_dart/src/bridges/arguments/evm_message_arguments.dart';
+import 'package:webon_kit_dart/src/models/wallet_info.dart';
 import 'package:webon_kit_dart/webon_kit_dart.dart';
 import 'package:webon_kit_dart/src/bridges/arguments/callback_arguments.dart';
 
@@ -18,6 +19,9 @@ external dynamic nomoGetAssetPrice(AssetArguments args);
 
 @JS()
 external dynamic nomoGetEvmAddress();
+
+@JS()
+external dynamic nomoGetWalletAddresses();
 
 @JS()
 external dynamic nomoSignEvmMessage(EvmMessageArguments args);
@@ -216,6 +220,25 @@ class WalletBridge {
       return result;
     } catch (e) {
       return 'no address found: $e';
+    }
+  }
+
+  static Future<WalletInfo?> getWalletAddresses() async {
+    final jsAddressPromise = nomoGetWalletAddresses();
+    final futureAddress = promiseToFuture(jsAddressPromise);
+
+    try {
+      final result = await futureAddress;
+      final address = getProperty(result, 'walletAddresses');
+      final eth = getProperty(address, 'ETH');
+      final zeniq = getProperty(address, 'ZENIQ');
+      final walletInfo = WalletInfo(
+        evmAddress: eth,
+        zeniqAddress: zeniq,
+      );
+      return walletInfo;
+    } catch (e) {
+      return null;
     }
   }
 

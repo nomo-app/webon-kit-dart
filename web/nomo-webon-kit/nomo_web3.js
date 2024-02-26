@@ -190,3 +190,4 @@ export async function nomoGetNFTs(args) {
 window.nomoGetEvmAddress = nomoGetEvmAddress;
 window.nomoSignEvmMessage = nomoSignEvmMessage;
 window.nomoLogIntoChat = nomoLogIntoChat;
+window.nomoGetWalletAddresses = nomoGetWalletAddresses;
