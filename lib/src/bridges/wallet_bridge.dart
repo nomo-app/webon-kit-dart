@@ -44,6 +44,9 @@ external dynamic nomoRegisterOnWebOnVisible(CardModeCallback callback);
 @JS()
 external dynamic nomoLaunchUrl(UrlArguments args);
 
+@JS()
+external dynamic nomoSelectAssetFromDialog();
+
 class WalletBridge {
   static Future<void> registerOnWebOnVisible(
       {required CardModeCallback callback}) async {
@@ -254,6 +257,34 @@ class WalletBridge {
       return signString;
     } catch (e) {
       return 'Evm message signing failed: $e';
+    }
+  }
+
+  static Future<Token?> selectAssetFromDialog() async {
+    try {
+      final jsSignEvmPromise = nomoSelectAssetFromDialog();
+
+      final futureSignMessage = promiseToFuture(jsSignEvmPromise);
+      final result = await futureSignMessage;
+      final selectedAsset = getProperty(result, 'selectedAsset');
+
+      final name = getProperty(selectedAsset, 'name');
+      final symbol = getProperty(selectedAsset, 'symbol');
+      final decimals = getProperty(selectedAsset, 'decimals');
+      final balance = getProperty(selectedAsset, 'balance');
+      final contractAddress = getProperty(selectedAsset, 'contractAddress');
+      final receiveAddress = getProperty(selectedAsset, 'receiveAddress');
+      final token = Token(
+          name: name,
+          symbol: symbol,
+          decimals: decimals,
+          contractAddress: contractAddress,
+          balance: balance,
+          network: null,
+          receiveAddress: receiveAddress);
+      return token;
+    } catch (e) {
+      return null;
     }
   }
 }

@@ -61,6 +61,12 @@ class WebonKitDart {
 
   /// Returns the balance of [symbol]
   /// Cannot be used outside the Nomo App.
+  static Future<Token?> selectAssetFromDialog() async {
+    return await WalletBridge.selectAssetFromDialog();
+  }
+
+  /// Returns the balance of [symbol]
+  /// Cannot be used outside the Nomo App.
   static Future<String> getBalance({required String symbol}) async {
     final args = AssetArguments(symbol: symbol);
     return await WalletBridge.getBalance(assetArguments: args);
