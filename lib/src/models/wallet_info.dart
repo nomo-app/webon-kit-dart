@@ -36,4 +36,12 @@ class WalletInfo {
       bitcoinCashAddress: json['bitcoinCashAddress'],
     );
   }
+  bool compareTo(WalletInfo other) {
+    return evmAddress == other.evmAddress &&
+        btcAddress == other.btcAddress &&
+        zeniqAddress == other.zeniqAddress &&
+        eurocoinAddress == other.eurocoinAddress &&
+        litecoinAddress == other.litecoinAddress &&
+        bitcoinCashAddress == other.bitcoinCashAddress;
+  }
 }
