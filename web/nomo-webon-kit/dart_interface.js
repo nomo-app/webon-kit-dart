@@ -133,3 +133,5 @@ try {
     }
 }
 catch (e) { }
+
+window.isFallbackModeActive = isFallbackModeActive;

@@ -18,6 +18,7 @@ import 'package:webon_kit_dart/src/bridges/chat_bridge.dart';
 import 'package:webon_kit_dart/src/bridges/platform_bridge.dart';
 import 'package:webon_kit_dart/src/bridges/theme_bridge.dart';
 import 'package:webon_kit_dart/src/bridges/wallet_bridge.dart';
+import 'package:webon_kit_dart/src/models/nomo_manifest.dart';
 import 'package:webon_kit_dart/src/models/theme/nomo_theme.dart';
 import 'package:webon_kit_dart/src/models/platform_infos.dart';
 import 'package:webon_kit_dart/src/models/theme/sub/nomo_colors.dart';
@@ -165,6 +166,14 @@ class WebonKitDart {
   /// returns the Language-Code of the Nomo App (e.g. en)
   static Future<String> getLanguage() async {
     return await PlatformBridge.getLanguage();
+  }
+
+  static Future<NomoManifest> getManifest() async {
+    return await PlatformBridge.getManifest();
+  }
+
+  static bool isFallbackMode() {
+    return isFallbackModeActive();
   }
 
   static String? getAddressForSymbol(

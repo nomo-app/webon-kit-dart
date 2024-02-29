@@ -2,6 +2,7 @@ import 'dart:js_util';
 
 import 'package:flutter/foundation.dart';
 import 'package:js/js.dart';
+import 'package:webon_kit_dart/src/models/nomo_manifest.dart';
 import 'package:webon_kit_dart/src/models/platform_infos.dart';
 
 @JS()
@@ -11,10 +12,16 @@ external dynamic nomoGetPlatformInfo();
 external dynamic nomoGetLanguage();
 
 @JS()
+external dynamic nomoGetManifest();
+
+@JS()
 external dynamic nomoGetDeviceHashes();
 
 @JS()
 external dynamic nomoGetDeviceName();
+
+@JS()
+external dynamic isFallbackModeActive();
 
 class PlatformBridge {
   static Future<NomoPlatformInfos> getPlatformInfo() async {
@@ -55,6 +62,22 @@ class PlatformBridge {
     } catch (e) {
       return 'getLanguage failed: $e';
     }
+  }
+
+  static Future<NomoManifest> getManifest() async {
+    final jsPromise = nomoGetManifest();
+
+    final future = promiseToFuture(jsPromise);
+    final result = await future;
+
+    return NomoManifest(
+      min_nomo_version: getProperty(result, 'min_nomo_version'),
+      nomo_manifest_version: getProperty(result, 'nomo_manifest_version'),
+      webon_id: getProperty(result, 'webon_id'),
+      webon_name: getProperty(result, 'webon_name'),
+      webon_url: getProperty(result, 'webon_url'),
+      webon_version: getProperty(result, 'webon_version'),
+    );
   }
 
   static Future<String> getDeviceHashes() async {
