@@ -5,7 +5,7 @@ export 'package:webon_kit_dart/src/bridges/arguments/send_assets_arguments.dart'
 export 'package:webon_kit_dart/src/models/token.dart';
 export 'package:webon_kit_dart/src/models/user_matrix.dart';
 export 'package:webon_kit_dart/src/models/url_launch_mode.dart';
-export 'package:webon_kit_dart/src/models/nomo_theme.dart';
+export 'package:webon_kit_dart/src/models/theme/nomo_theme.dart';
 export 'package:webon_kit_dart/src/models/wallet_info.dart';
 
 // import 'package:nomo_ui_kit/theme/sub/nomo_color_theme.dart';
@@ -18,8 +18,9 @@ import 'package:webon_kit_dart/src/bridges/chat_bridge.dart';
 import 'package:webon_kit_dart/src/bridges/platform_bridge.dart';
 import 'package:webon_kit_dart/src/bridges/theme_bridge.dart';
 import 'package:webon_kit_dart/src/bridges/wallet_bridge.dart';
-import 'package:webon_kit_dart/src/models/nomo_theme.dart';
+import 'package:webon_kit_dart/src/models/theme/nomo_theme.dart';
 import 'package:webon_kit_dart/src/models/platform_infos.dart';
+import 'package:webon_kit_dart/src/models/theme/sub/nomo_colors.dart';
 import 'package:webon_kit_dart/src/models/token.dart';
 import 'package:webon_kit_dart/src/models/url_launch_mode.dart';
 import 'package:webon_kit_dart/src/models/user_matrix.dart';
@@ -28,7 +29,6 @@ import 'package:webon_kit_dart/src/models/wallet_info.dart';
 
 typedef AssetPrice = Map<String, dynamic>;
 
-/// A Calculator.
 class WebonKitDart {
   /// Logs into the Chat Server by calling the Nomo App function.
   static Future<UserMatrix> nomoChatLogin() async {
@@ -100,12 +100,6 @@ class WebonKitDart {
     final args = AuthMessageArguments(message: message, url: url);
     return await AuthBridge.signAuthMessage(message: args);
   }
-
-  /// Returns the chat address
-  /// Cannot be used outside the Nomo App.
-  // static Future<String> getChatAddress() async {
-  //   return await ChatBridge.getMessengerAddress();
-  // }
 
   /// Launches a [url] with the [launchMode] provided
   static Future<void> launchUrl(
@@ -192,7 +186,7 @@ class WebonKitDart {
   }
 
   // set the colors of the Nomo App Theme
-  // static Future<dynamic> setColors(NomoColors colors) async {
-  //   return await ThemeBridge.setColors(colors);
-  // }
+  static Future<dynamic> setColors(NomoColors colors) async {
+    return await ThemeBridge.setColors(colors);
+  }
 }

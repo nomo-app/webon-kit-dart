@@ -156,7 +156,9 @@ const lightTheme = {
         secondary: "#d1af72ff",
         onSecondary: "#000000ff",
         secondaryContainer: "#e6d0a3ff",
-        background: "#f5f5f5ff",
+        background1: "#f5f5f5ff",
+        background2: "#f5f5f5ff",
+        background3: "#f5f5f5ff",
         surface: "#ffffffff",
         foreground1: "#000000cf",
         foreground2: "#000000df",
@@ -166,6 +168,7 @@ const lightTheme = {
         error: "#ff5252ff",
         settingsTileColor: "#ffffffff",
         settingsColumnColor: "#edededff",
+        brightness: 1,
     },
 };
 const darkTheme = {
@@ -178,7 +181,9 @@ const darkTheme = {
         secondary: "#d1af72ff",
         onSecondary: "#000000ff",
         secondaryContainer: "#e6d0a3ff",
-        background: "#293138ff",
+        background1: "#293138ff",
+        background2: "#293138ff",
+        background3: "#293138ff",
         surface: "#2e363cff",
         foreground1: "#ffffffea",
         foreground2: "#fffffff0",
@@ -188,6 +193,7 @@ const darkTheme = {
         error: "#ff5252ff",
         settingsTileColor: "#4b5a66ff",
         settingsColumnColor: "#38434cff",
+        brightness: 0,
     },
 };
 const avinocTheme = {
@@ -200,7 +206,9 @@ const avinocTheme = {
         secondary: "#2faaa5ff",
         onSecondary: "#1c1c1cff",
         secondaryContainer: "#1c1c1cff",
-        background: "#272f4aff",
+        background1: "#272f4aff",
+        background2: "#272f4aff",
+        background3: "#272f4aff",
         surface: "#101d42ff",
         foreground1: "#ffffffea",
         foreground2: "#fffffff0",
@@ -210,6 +218,7 @@ const avinocTheme = {
         error: "#ff5252ff",
         settingsTileColor: "#333a66ff",
         settingsColumnColor: "#232846ff",
+        brightness: 0,
     },
 };
 const tupanTheme = {
@@ -222,7 +231,9 @@ const tupanTheme = {
         secondary: "#77af22ff",
         onSecondary: "#1c1c1cff",
         secondaryContainer: "#1c1c1cff",
-        background: "#417030ff",
+        background1: "#417030ff",
+        background2: "#417030ff",
+        background3: "#417030ff",
         surface: "#346231ff",
         foreground1: "#ffffffea",
         foreground2: "#fffffff0",
@@ -232,6 +243,7 @@ const tupanTheme = {
         error: "#ff5252ff",
         settingsTileColor: "#4a8037ff",
         settingsColumnColor: "#417030ff",
+        brightness: 0,
     },
 };
 /**
