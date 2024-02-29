@@ -38,7 +38,6 @@ class ThemeBridge {
       final surface = getProperty(colors, 'surface');
       final error = getProperty(colors, 'error');
       final disabledColor = getProperty(colors, 'disabledColor');
-      final snackBarColor = getProperty(colors, 'snackBarColor');
       final foreground1 = getProperty(colors, 'foreground1');
       final foreground2 = getProperty(colors, 'foreground2');
       final foreground3 = getProperty(colors, 'foreground3');
@@ -61,7 +60,6 @@ class ThemeBridge {
           'surface': surface,
           'error': error,
           'disabledColor': disabledColor,
-          'snackBarColor': snackBarColor,
           'foreground1': foreground1,
           'foreground2': foreground2,
           'foreground3': foreground3
