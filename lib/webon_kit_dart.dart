@@ -194,6 +194,10 @@ class WebonKitDart {
     }
   }
 
+  static Future<List<NomoManifest>> getInstalledWebOns() {
+    return PlatformBridge.getInstalledWebOns();
+  }
+
   // set the colors of the Nomo App Theme
   static Future<dynamic> setColors(NomoColors colors) async {
     return await ThemeBridge.setColors(colors);

@@ -3,6 +3,7 @@ import 'dart:js_util';
 import 'package:flutter/foundation.dart';
 import 'package:js/js.dart';
 import 'package:webon_kit_dart/src/models/nomo_manifest.dart';
+import 'package:webon_kit_dart/src/models/nomo_manifest.dart';
 import 'package:webon_kit_dart/src/models/platform_infos.dart';
 
 @JS()
@@ -22,6 +23,9 @@ external dynamic nomoGetDeviceName();
 
 @JS()
 external dynamic isFallbackModeActive();
+
+@JS()
+external dynamic nomoGetInstalledWebOns();
 
 class PlatformBridge {
   static Future<NomoPlatformInfos> getPlatformInfo() async {
@@ -105,6 +109,33 @@ class PlatformBridge {
       return deviceName;
     } catch (e) {
       return 'deviceName failed: $e';
+    }
+  }
+
+  static Future<List<NomoManifest>> getInstalledWebOns() async {
+    final jsInstalledWebOns = nomoGetInstalledWebOns();
+    final futureInstalledWebOns = promiseToFuture(jsInstalledWebOns);
+
+    try {
+      final result = await futureInstalledWebOns;
+      final resultAsMap = getProperty(result, 'manifests');
+      List<NomoManifest> nomoManifests = [];
+      resultAsMap.forEach((element) {
+        final nomoManifest = NomoManifest(
+          min_nomo_version: getProperty(element, 'min_nomo_version'),
+          nomo_manifest_version: getProperty(element, 'nomo_manifest_version'),
+          webon_id: getProperty(element, 'webon_id'),
+          webon_name: getProperty(element, 'webon_name'),
+          webon_url: getProperty(element, 'webon_url'),
+          webon_version: getProperty(element, 'webon_version'),
+        );
+        nomoManifests.add(nomoManifest);
+      });
+
+      return nomoManifests;
+    } catch (e) {
+      print("Failed to load WebOns $e");
+      return [];
     }
   }
 }
