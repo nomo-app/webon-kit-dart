@@ -1,7 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
 class NomoManifest {
-  final String min_nomo_version;
+  final String? min_nomo_version;
   final String nomo_manifest_version;
   final String webon_id;
   final String webon_name;

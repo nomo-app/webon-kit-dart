@@ -120,14 +120,23 @@ class PlatformBridge {
       final result = await futureInstalledWebOns;
       final resultAsMap = getProperty(result, 'manifests');
       List<NomoManifest> nomoManifests = [];
+
       resultAsMap.forEach((element) {
+        final minNomoVersion = getProperty(element, 'min_nomo_version');
+        final nomoManifestVersion =
+            getProperty(element, 'nomo_manifest_version');
+        final webonId = getProperty(element, 'webon_id');
+        final webonName = getProperty(element, 'webon_name');
+        final webonUrl = getProperty(element, 'webon_url');
+        final webonVersion = getProperty(element, 'webon_version');
+
         final nomoManifest = NomoManifest(
-          min_nomo_version: getProperty(element, 'min_nomo_version'),
-          nomo_manifest_version: getProperty(element, 'nomo_manifest_version'),
-          webon_id: getProperty(element, 'webon_id'),
-          webon_name: getProperty(element, 'webon_name'),
-          webon_url: getProperty(element, 'webon_url'),
-          webon_version: getProperty(element, 'webon_version'),
+          min_nomo_version: minNomoVersion,
+          nomo_manifest_version: nomoManifestVersion,
+          webon_id: webonId,
+          webon_name: webonName,
+          webon_url: webonUrl,
+          webon_version: webonVersion,
         );
         nomoManifests.add(nomoManifest);
       });
