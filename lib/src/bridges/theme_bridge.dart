@@ -23,7 +23,6 @@ class ThemeBridge {
       final name = getProperty(result, 'name');
       final displayName = getProperty(result, 'displayName');
       final colors = getProperty(result, 'colors');
-
       final primary = getProperty(colors, 'primary');
       final brightness = getProperty(colors, 'brightness');
       final onPrimary = getProperty(colors, 'onPrimary');
@@ -47,7 +46,7 @@ class ThemeBridge {
         'displayName': displayName,
         'colors': {
           'primary': primary,
-          'brightness': brightness,
+          'brightness': int.parse(brightness),
           'onPrimary': onPrimary,
           'primaryContainer': primaryContainer,
           'secondary': secondary,
