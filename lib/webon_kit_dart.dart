@@ -7,6 +7,7 @@ export 'package:webon_kit_dart/src/models/user_matrix.dart';
 export 'package:webon_kit_dart/src/models/url_launch_mode.dart';
 export 'package:webon_kit_dart/src/models/theme/nomo_theme.dart';
 export 'package:webon_kit_dart/src/models/wallet_info.dart';
+export 'package:webon_kit_dart/src/models/nomo_manifest.dart';
 
 // import 'package:nomo_ui_kit/theme/sub/nomo_color_theme.dart';
 import 'package:webon_kit_dart/src/bridges/arguments/asset_arguments.dart';
