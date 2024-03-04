@@ -197,18 +197,21 @@ class WalletBridge {
 
   static Future<AssetPrice> getAssetPrice(
       {required AssetArguments assetArguments}) async {
-    final jsPricePromise = nomoGetAssetPrice(assetArguments);
-
-    final futurePrice = promiseToFuture(jsPricePromise);
     try {
+      final jsPricePromise = nomoGetAssetPrice(assetArguments);
+      final futurePrice = promiseToFuture(jsPricePromise);
       final result = await futurePrice;
       final priceString = getProperty(result, 'price');
       final currencyDisplayName = getProperty(result, 'currencyDisplayName');
+      final currencySymbol = getProperty(result, 'currencySymbol');
 
-      return {
+      final a = {
         'price': priceString,
         'currencyDisplayName': currencyDisplayName,
+        'currencySymbol': currencySymbol,
       };
+      print(a);
+      return a;
     } catch (e) {
       throw Exception('no price found: $e');
     }
@@ -282,13 +285,14 @@ class WalletBridge {
       final balance = getProperty(selectedAsset, 'balance');
       final contractAddress = getProperty(selectedAsset, 'contractAddress');
       final receiveAddress = getProperty(selectedAsset, 'receiveAddress');
+      final network = getProperty(selectedAsset, 'network');
       final token = Token(
           name: name,
           symbol: symbol,
           decimals: decimals,
           contractAddress: contractAddress,
           balance: balance,
-          network: null,
+          network: network,
           receiveAddress: receiveAddress);
       return token;
     } catch (e) {

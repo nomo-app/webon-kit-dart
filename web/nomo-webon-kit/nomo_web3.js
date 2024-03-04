@@ -196,3 +196,4 @@ window.nomoSignEvmMessage = nomoSignEvmMessage;
 window.nomoLogIntoChat = nomoLogIntoChat;
 window.nomoGetWalletAddresses = nomoGetWalletAddresses;
 window.nomoSelectAssetFromDialog = nomoSelectAssetFromDialog;
+window.nomoGetAssetPrice = nomoGetAssetPrice
