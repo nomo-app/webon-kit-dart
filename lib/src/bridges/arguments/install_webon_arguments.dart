@@ -1,11 +1,11 @@
-class InstallWebonArguments {
-  final String deeplink;
-  final bool skipPermissionDialog;
-  final bool navigateBack;
+import 'package:js/js.dart';
 
-  InstallWebonArguments({
-    required this.deeplink,
-    required this.skipPermissionDialog,
-    required this.navigateBack,
-  });
+@JS()
+@anonymous
+class InstallWebonArguments {
+  external String get deeplink;
+  external bool get skipPermissionDialog;
+  external bool get navigateBack;
+  external factory InstallWebonArguments(
+      {String deeplink, bool skipPermissionDialog, bool navigateBack});
 }
