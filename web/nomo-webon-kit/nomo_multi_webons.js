@@ -161,3 +161,4 @@ export const nomoLocalStorage = {
 window.nomoSetLocalStorageItem = nomoLocalStorage.setItem;
 window.nomoGetLocalStorageItem = nomoLocalStorage.getItem;
 window.nomoRemoveLocalStorageItem = nomoLocalStorage.removeItem;
+window.nomoInstallWebOn = nomoInstallWebOn;

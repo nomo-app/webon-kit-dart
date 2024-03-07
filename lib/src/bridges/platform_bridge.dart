@@ -2,7 +2,7 @@ import 'dart:js_util';
 
 import 'package:flutter/foundation.dart';
 import 'package:js/js.dart';
-import 'package:webon_kit_dart/src/models/nomo_manifest.dart';
+import 'package:webon_kit_dart/src/bridges/arguments/install_webon_arguments.dart';
 import 'package:webon_kit_dart/src/models/nomo_manifest.dart';
 import 'package:webon_kit_dart/src/models/platform_infos.dart';
 
@@ -20,6 +20,9 @@ external dynamic nomoGetDeviceHashes();
 
 @JS()
 external dynamic nomoGetDeviceName();
+
+@JS()
+external dynamic nomoInstallWebOn(InstallWebonArguments args);
 
 @JS()
 external dynamic isFallbackModeActive();
@@ -145,6 +148,17 @@ class PlatformBridge {
     } catch (e) {
       print("Failed to load WebOns $e");
       return [];
+    }
+  }
+
+  static Future<void> installWebOn(InstallWebonArguments arguments) async {
+    try {
+      final jsinstallWebonPromise = nomoInstallWebOn(arguments);
+
+      final futureGetDeviceNames = promiseToFuture(jsinstallWebonPromise);
+      await futureGetDeviceNames;
+    } catch (e) {
+      debugPrint(e.toString());
     }
   }
 }

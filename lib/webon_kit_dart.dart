@@ -13,6 +13,7 @@ export 'package:webon_kit_dart/src/models/nomo_manifest.dart';
 import 'package:webon_kit_dart/src/bridges/arguments/asset_arguments.dart';
 import 'package:webon_kit_dart/src/bridges/arguments/auth_message_arguments.dart';
 import 'package:webon_kit_dart/src/bridges/arguments/evm_message_arguments.dart';
+import 'package:webon_kit_dart/src/bridges/arguments/install_webon_arguments.dart';
 import 'package:webon_kit_dart/src/bridges/arguments/send_assets_arguments.dart';
 import 'package:webon_kit_dart/src/bridges/auth_bridge.dart';
 import 'package:webon_kit_dart/src/bridges/chat_bridge.dart';
@@ -197,6 +198,17 @@ class WebonKitDart {
 
   static Future<List<NomoManifest>> getInstalledWebOns() {
     return PlatformBridge.getInstalledWebOns();
+  }
+
+  static Future<void> installWebon(
+      {required String link,
+      bool skipPermissionDialog = false,
+      bool navigateBack = false}) {
+    final args = InstallWebonArguments(
+        deeplink: link,
+        skipPermissionDialog: skipPermissionDialog,
+        navigateBack: navigateBack);
+    return PlatformBridge.installWebOn(args);
   }
 
   // set the colors of the Nomo App Theme
