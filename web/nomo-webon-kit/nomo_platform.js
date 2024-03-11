@@ -162,9 +162,17 @@ function nomoNativeLog(severity, args) {
     }
 }
 
+export async function nomoNavigateToWallet(args) {
+    if (isFallbackModeActive) {
+        return;
+    }
+    return await invokeNomoFunction("nomoNavigateToWallet", args);
+}
+
 
 window.nomoGetLanguage = nomoGetLanguage;
 window.nomoGetPlatformInfo = nomoGetPlatformInfo;
 window.nomoGetDeviceHashes = nomoGetDeviceHashes;
 window.nomoGetDeviceName = nomoGetDeviceName;
-window.nomoRegisterOnWebOnVisible = nomoRegisterOnWebOnVisible
+window.nomoRegisterOnWebOnVisible = nomoRegisterOnWebOnVisible;
+windows.nomoNavigateToWallet = nomoNavigateToWallet;

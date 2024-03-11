@@ -215,4 +215,10 @@ class WebonKitDart {
   static Future<dynamic> setColors(NomoColors colors) async {
     return await ThemeBridge.setColors(colors);
   }
+
+  /// navigates to the local wallet information page of [symbol]
+  static Future<void> navigateToWallet(String symbol) async {
+    final args = AssetArguments(symbol: symbol);
+    await PlatformBridge.navigateToWallet(args);
+  }
 }

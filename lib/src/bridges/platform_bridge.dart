@@ -5,6 +5,7 @@ import 'package:js/js.dart';
 import 'package:webon_kit_dart/src/bridges/arguments/install_webon_arguments.dart';
 import 'package:webon_kit_dart/src/models/nomo_manifest.dart';
 import 'package:webon_kit_dart/src/models/platform_infos.dart';
+import 'package:webon_kit_dart/webon_kit_dart.dart';
 
 @JS()
 external dynamic nomoGetPlatformInfo();
@@ -29,6 +30,9 @@ external dynamic isFallbackModeActive();
 
 @JS()
 external dynamic nomoGetInstalledWebOns();
+
+@JS()
+external dynamic nomoNavigateToWallet(AssetArguments args);
 
 class PlatformBridge {
   static Future<NomoPlatformInfos> getPlatformInfo() async {
@@ -154,6 +158,17 @@ class PlatformBridge {
   static Future<void> installWebOn(InstallWebonArguments arguments) async {
     try {
       final jsinstallWebonPromise = nomoInstallWebOn(arguments);
+
+      final futureGetDeviceNames = promiseToFuture(jsinstallWebonPromise);
+      await futureGetDeviceNames;
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
+  static Future<void> navigateToWallet(AssetArguments args) async {
+    try {
+      final jsinstallWebonPromise = nomoNavigateToWallet(args);
 
       final futureGetDeviceNames = promiseToFuture(jsinstallWebonPromise);
       await futureGetDeviceNames;
