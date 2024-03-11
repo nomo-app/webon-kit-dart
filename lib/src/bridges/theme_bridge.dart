@@ -41,12 +41,14 @@ class ThemeBridge {
       final foreground2 = getProperty(colors, 'foreground2');
       final foreground3 = getProperty(colors, 'foreground3');
 
+      final bri = (brightness is int) ? brightness : int.tryParse(brightness);
+
       Map<String, dynamic> theme = {
         'name': name,
         'displayName': displayName,
         'colors': {
           'primary': primary,
-          'brightness': int.parse(brightness),
+          'brightness': bri,
           'onPrimary': onPrimary,
           'primaryContainer': primaryContainer,
           'secondary': secondary,
