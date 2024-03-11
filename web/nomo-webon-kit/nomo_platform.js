@@ -163,9 +163,6 @@ function nomoNativeLog(severity, args) {
 }
 
 export async function nomoNavigateToWallet(args) {
-    if (isFallbackModeActive) {
-        return;
-    }
     return await invokeNomoFunction("nomoNavigateToWallet", args);
 }
 
