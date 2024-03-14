@@ -218,7 +218,38 @@ class WebonKitDart {
 
   /// navigates to the local wallet information page of [symbol]
   static Future<void> navigateToWallet(String symbol) async {
+    final minVersionCheck = await checkMinAppVersion(minVersion: '0.4.0');
+    if (!minVersionCheck) return;
     final args = AssetArguments(symbol: symbol);
     await PlatformBridge.navigateToWallet(args);
   }
+
+  static Future<bool> checkMinAppVersion({required String minVersion}) async {
+    final appInfos = await getPlatformInfos();
+    final appVersion = appInfos.version;
+    final result = _compareVersion(versionA: appVersion, versionB: minVersion);
+    return result != -1;
+  }
+}
+
+/// returns 1 if versionA is newer than versionB
+/// returns -1 if versionA is older than versionB
+/// returns 0 if versionA and versionB are the same
+int _compareVersion({required String versionA, required String versionB}) {
+  List<String> splitA = versionA.split('.');
+  List<String> splitB = versionB.split('.');
+  int length = (splitA.length > splitB.length) ? splitA.length : splitB.length;
+
+  for (int i = 0; i < length; i++) {
+    int partA = (i < splitA.length) ? int.parse(splitA[i]) : 0;
+    int partB = (i < splitB.length) ? int.parse(splitB[i]) : 0;
+
+    if (partA > partB) {
+      return 1;
+    } else if (partA < partB) {
+      return -1;
+    }
+  }
+
+  return 0; // Versions are the same
 }
