@@ -162,3 +162,6 @@ window.nomoSetLocalStorageItem = nomoLocalStorage.setItem;
 window.nomoGetLocalStorageItem = nomoLocalStorage.getItem;
 window.nomoRemoveLocalStorageItem = nomoLocalStorage.removeItem;
 window.nomoInstallWebOn = nomoInstallWebOn;
+window.nomoGetInstalledWebOns = nomoGetInstalledWebOns;
+window.nomoLaunchUrl = nomoLaunchUrl;
+window.nomoGetManifest = nomoGetManifest;

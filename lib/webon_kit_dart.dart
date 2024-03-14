@@ -224,6 +224,8 @@ class WebonKitDart {
     await PlatformBridge.navigateToWallet(args);
   }
 
+  /// returns [true] if the App Version is higher than your [minVersion]
+  /// Format for [minVersion] is: '0.1.0'
   static Future<bool> checkMinAppVersion({required String minVersion}) async {
     final appInfos = await getPlatformInfos();
     final appVersion = appInfos.version;
