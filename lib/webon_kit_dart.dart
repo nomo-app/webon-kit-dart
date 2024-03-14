@@ -17,6 +17,7 @@ import 'package:webon_kit_dart/src/bridges/arguments/install_webon_arguments.dar
 import 'package:webon_kit_dart/src/bridges/arguments/send_assets_arguments.dart';
 import 'package:webon_kit_dart/src/bridges/auth_bridge.dart';
 import 'package:webon_kit_dart/src/bridges/chat_bridge.dart';
+import 'package:webon_kit_dart/src/bridges/media_bridge.dart';
 import 'package:webon_kit_dart/src/bridges/platform_bridge.dart';
 import 'package:webon_kit_dart/src/bridges/theme_bridge.dart';
 import 'package:webon_kit_dart/src/bridges/wallet_bridge.dart';
@@ -33,6 +34,11 @@ import 'package:webon_kit_dart/src/models/wallet_info.dart';
 typedef AssetPrice = Map<String, dynamic>;
 
 class WebonKitDart {
+  /// Scans a QR-Code and returns the content
+  static Future<String> scanQR() async {
+    return await MediaBridge.scanQR();
+  }
+
   /// Logs into the Chat Server by calling the Nomo App function.
   static Future<UserMatrix> nomoChatLogin() async {
     return await ChatBridge.getNomoLogin();
