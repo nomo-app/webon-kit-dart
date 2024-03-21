@@ -36,7 +36,7 @@ typedef AssetPrice = Map<String, dynamic>;
 
 class WebonKitDart {
   /// Scans a QR-Code and returns the content
-  static Future<String> scanQR() async {
+  static Future<String?> scanQR() async {
     return await MediaBridge.scanQR();
   }
 

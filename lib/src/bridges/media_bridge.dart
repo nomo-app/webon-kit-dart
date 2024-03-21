@@ -6,17 +6,19 @@ import 'package:js/js.dart';
 external dynamic nomoQrScan();
 
 class MediaBridge {
-  static Future<String> scanQR() async {
+  static Future<String?> scanQR() async {
     try {
       final jsScanQRPromise = nomoQrScan();
 
       final futureScanQR = promiseToFuture(jsScanQRPromise);
       final result = await futureScanQR;
 
-      return result;
+      final resultString = getProperty(result, "qrCode");
+
+      return resultString;
     } catch (e) {
       debugPrint(e.toString());
-      rethrow;
+      return null;
     }
   }
 }
