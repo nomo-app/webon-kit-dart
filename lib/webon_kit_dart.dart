@@ -22,6 +22,7 @@ import 'package:webon_kit_dart/src/bridges/platform_bridge.dart';
 import 'package:webon_kit_dart/src/bridges/theme_bridge.dart';
 import 'package:webon_kit_dart/src/bridges/wallet_bridge.dart';
 import 'package:webon_kit_dart/src/models/nomo_manifest.dart';
+import 'package:webon_kit_dart/src/models/notification_model.dart';
 import 'package:webon_kit_dart/src/models/theme/nomo_theme.dart';
 import 'package:webon_kit_dart/src/models/platform_infos.dart';
 import 'package:webon_kit_dart/src/models/theme/sub/nomo_colors.dart';
@@ -228,6 +229,22 @@ class WebonKitDart {
     if (!minVersionCheck) return;
     final args = AssetArguments(symbol: symbol);
     await PlatformBridge.navigateToWallet(args);
+  }
+
+  /// shows a notification in the nomo app
+  static Future<void> showNotification(
+      {required String title,
+      required String body,
+      required String channelName,
+      String? payload}) async {
+    final minVersionCheck = await checkMinAppVersion(minVersion: '0.4.0');
+    if (!minVersionCheck) return;
+    final args = NotificationModel(
+        title: title,
+        body: body,
+        payload: payload ?? '',
+        channelName: channelName);
+    await PlatformBridge.showNotification(args);
   }
 
   /// returns [true] if the App Version is higher than your [minVersion]

@@ -15,6 +15,10 @@ export async function hasMinimumNomoVersion(args) {
         return { minVersionFulfilled: true, nomoVersion };
     }
 }
+
+export async function nomoShowNotification(args) {
+    return await invokeNomoFunction("nomoShowNotification", args);
+}
 /**
  * Returns both the NOMO-version and the operating system where the WebOn runs.
  * Can be used for implementing platform-specific functionality.
@@ -173,3 +177,4 @@ window.nomoGetDeviceHashes = nomoGetDeviceHashes;
 window.nomoGetDeviceName = nomoGetDeviceName;
 window.nomoRegisterOnWebOnVisible = nomoRegisterOnWebOnVisible;
 window.nomoNavigateToWallet = nomoNavigateToWallet;
+window.nomoShowNotification = nomoShowNotification;

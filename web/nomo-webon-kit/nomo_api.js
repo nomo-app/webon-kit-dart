@@ -45,6 +45,7 @@ export const nomo = {
     getPlatformInfo: platform.nomoGetPlatformInfo,
     getExecutionMode: platform.nomoGetExecutionMode,
     getLanguage: platform.nomoGetLanguage,
+    getLanguage: platform.nomoShowNotification,
     getDeviceHashes: platform.nomoGetDeviceHashes,
     getDeviceName: platform.nomoGetDeviceName,
     registerOnWebOnVisible: platform.nomoRegisterOnWebOnVisible,
