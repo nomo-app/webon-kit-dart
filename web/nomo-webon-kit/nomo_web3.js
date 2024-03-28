@@ -198,3 +198,4 @@ window.nomoGetWalletAddresses = nomoGetWalletAddresses;
 window.nomoSelectAssetFromDialog = nomoSelectAssetFromDialog;
 window.nomoGetAssetPrice = nomoGetAssetPrice;
 window.nomoSendAssets = nomoSendAssets;
+window.nomoGetBalance = nomoGetBalance;
