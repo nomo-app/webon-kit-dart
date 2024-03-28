@@ -26,9 +26,13 @@ Afterwards, clone submodules with:
 git submodule update --init --recursive
 ```
 
-### Add JS modules to index.html
+### Copy JS-modules
 
-Add the following to your index.html:
+Copy the *.js-files from https://github.com/nomo-app/nomo-webon-kit/tree/main/nomo-webon-kit/dist into your `web` folder.
+
+### Add JS-modules to index.html
+
+Add the following to your `web/index.html`:
 
 ```
 <head>
