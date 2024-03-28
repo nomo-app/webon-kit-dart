@@ -199,3 +199,7 @@ window.nomoSelectAssetFromDialog = nomoSelectAssetFromDialog;
 window.nomoGetAssetPrice = nomoGetAssetPrice;
 window.nomoSendAssets = nomoSendAssets;
 window.nomoGetBalance = nomoGetBalance;
+window.nomoAddCustomToken = nomoAddCustomToken;
+window.nomoLaunchSmartchainFaucet = nomoLaunchSmartchainFaucet;
+window.nomoMnemonicBackupExisted = nomoMnemonicBackupExisted;
+window.nomoGetNFTs = nomoGetNFTs;
