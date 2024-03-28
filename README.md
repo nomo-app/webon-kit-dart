@@ -38,7 +38,6 @@ Add the following to your `web/index.html`:
 <head>
     .... some other stuff
   <script src="flutter.js" defer></script>
-  <script src="assets/assets/js/package/olm.js"></script>
   <script type="module" src="nomo-webon-kit/dart_interface.js" defer></script>
   <script type="module" src="nomo-webon-kit/index.js" defer></script>
   <script type="module" src="nomo-webon-kit/nomo_api.js" defer></script>
