@@ -28,7 +28,7 @@ git submodule update --init --recursive
 
 ### Copy JS-modules
 
-Copy the *.js-files from https://github.com/nomo-app/webon-kit-dart/blob/main/web/nomo-webon-kit into your `web` folder.
+Copy the folder https://github.com/nomo-app/webon-kit-dart/blob/main/web/nomo-webon-kit into your `web` folder.
 
 ### Add JS-modules to index.html
 
