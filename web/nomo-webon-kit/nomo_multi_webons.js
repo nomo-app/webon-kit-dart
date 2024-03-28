@@ -158,6 +158,13 @@ export const nomoLocalStorage = {
     },
 };
 
+
+window.nomoInstallUrlAsWebOn = nomoInstallUrlAsWebOn;
+window.nomoUninstallWebOn = nomoUninstallWebOn;
+window.nomoReplaceWebOn = nomoReplaceWebOn;
+window.nomoMigrateAndSelfDestroy = nomoMigrateAndSelfDestroy;
+window.nomoLaunchWebOn = nomoLaunchWebOn;
+window.nomoLaunchUrlAsWebOn = nomoLaunchUrlAsWebOn;
 window.nomoSetLocalStorageItem = nomoLocalStorage.setItem;
 window.nomoGetLocalStorageItem = nomoLocalStorage.getItem;
 window.nomoRemoveLocalStorageItem = nomoLocalStorage.removeItem;

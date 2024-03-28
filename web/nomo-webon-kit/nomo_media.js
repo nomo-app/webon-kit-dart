@@ -92,4 +92,10 @@ export async function nomoGetMessengerAddress() {
   }
   return await invokeNomoFunctionCached("nomoGetMessengerAddress", null);
 }
+
+window.nomoInjectQRCode = nomoInjectQRCode;
+window.nomoQrScan = nomoQrScan;
+window.nomoOpenFAQPage = nomoOpenFAQPage;
+window.nomoTakePicture = nomoTakePicture;
+window.nomoPickFromGallery = nomoPickFromGallery;
 window.nomoGetMessengerAddress = nomoGetMessengerAddress;

@@ -274,3 +274,5 @@ function convertFlutterColorIntoCSSColor(flutterColor) {
 }
 
 window.getCurrentNomoTheme = getCurrentNomoTheme;
+window.switchNomoTheme = switchNomoTheme;
+window.injectNomoCSSVariables = injectNomoCSSVariables;

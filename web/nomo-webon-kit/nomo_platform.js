@@ -172,9 +172,13 @@ export async function nomoNavigateToWallet(args) {
 
 
 window.nomoGetLanguage = nomoGetLanguage;
+window.hasMinimumNomoVersion = hasMinimumNomoVersion;
 window.nomoGetPlatformInfo = nomoGetPlatformInfo;
+window.nomoGetExecutionMode = nomoGetExecutionMode;
 window.nomoGetDeviceHashes = nomoGetDeviceHashes;
 window.nomoGetDeviceName = nomoGetDeviceName;
+window.nomoCheckForWebOnUpdate = nomoCheckForWebOnUpdate;
 window.nomoRegisterOnWebOnVisible = nomoRegisterOnWebOnVisible;
+window.nomoEnableMobileConsoleDebugging = nomoEnableMobileConsoleDebugging;
 window.nomoNavigateToWallet = nomoNavigateToWallet;
 window.nomoShowNotification = nomoShowNotification;

@@ -112,3 +112,5 @@ function fillMissingArgs(args) {
 }
 
 window.nomoSignAuthMessage = nomoSignAuthMessage;
+window.nomoAuthFetch = nomoAuthFetch;
+window.nomoAuthHttp = nomoAuthHttp;
