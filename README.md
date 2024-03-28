@@ -28,7 +28,7 @@ git submodule update --init --recursive
 
 ### Copy JS-modules
 
-Copy the *.js-files from https://github.com/nomo-app/nomo-webon-kit/tree/main/nomo-webon-kit/dist into your `web` folder.
+Copy the *.js-files from https://github.com/nomo-app/webon-kit-dart/blob/main/web/nomo-webon-kit/nomo_multi_webons.js into your `web` folder.
 
 ### Add JS-modules to index.html
 
@@ -50,18 +50,6 @@ Add the following to your `web/index.html`:
   <script src="nomo-webon-kit/nomo_web3.js" type="module" defer></script>
   <script src="nomo-webon-kit/util.js" type="module" defer></script>
 </head>
-```
-
-### Modify JS-modules
-
-Bind the Nomo-functions that you want to use to the global window object.
-For example, you could modify your `nomo_platform.js` like so:
-
-```
-window.nomoGetLanguage = nomoGetLanguage;
-window.nomoGetPlatformInfo = nomoGetPlatformInfo;
-window.nomoGetDeviceHashes = nomoGetDeviceHashes;
-// other nomo functions ...
 ```
 
 ## Launch dev server
