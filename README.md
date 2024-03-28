@@ -26,3 +26,9 @@ Afterwards, clone submodules with:
 git submodule update --init --recursive
 ```
 
+## Launch dev server
+
+When running a Flutter web application, the default behavior is to bind to localhost, making the application accessible only from the same machine.
+To make it accessible from other devices on your local network, you need to specify something like "--web-hostname 0.0.0.0":
+
+flutter run -d web-server --web-port 3000 --web-hostname 0.0.0.0
