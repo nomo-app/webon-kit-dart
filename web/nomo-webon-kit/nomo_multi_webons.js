@@ -172,4 +172,3 @@ window.nomoInstallWebOn = nomoInstallWebOn;
 window.nomoGetInstalledWebOns = nomoGetInstalledWebOns;
 window.nomoLaunchUrl = nomoLaunchUrl;
 window.nomoGetManifest = nomoGetManifest;
-window.nomoUninstallWebOn = nomoUninstallWebOn;
