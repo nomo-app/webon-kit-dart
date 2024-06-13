@@ -42,8 +42,8 @@ export async function nomoInstallUrlAsWebOn(args) {
  *
  * Needs nomo.permission.INSTALL_WEBON.
  */
-export async function nomoRemoveWebOn(args) {
-    return await invokeNomoFunction("nomoRemoveWebOn", args);
+export async function nomoUninstallWebOn(args) {
+    return await invokeNomoFunction("nomoUninstallWebOn", args);
 }
 /**
  * Tries to add a WebOn and then uninstalls another WebOn if it was successfully added.
@@ -172,4 +172,4 @@ window.nomoInstallWebOn = nomoInstallWebOn;
 window.nomoGetInstalledWebOns = nomoGetInstalledWebOns;
 window.nomoLaunchUrl = nomoLaunchUrl;
 window.nomoGetManifest = nomoGetManifest;
-window.nomoRemoveWebOn = nomoRemoveWebOn;
+window.nomoUninstallWebOn = nomoUninstallWebOn;

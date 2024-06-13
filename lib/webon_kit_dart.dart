@@ -219,7 +219,7 @@ class WebonKitDart {
   }
 
   static Future<void> removeWebOn({required String link}) async {
-    final args = RemoveWebonArguments(deeplink: link);
+    final args = RemoveWebonArguments(webon_url: link);
     await PlatformBridge.removeWebOn(args);
   }
 

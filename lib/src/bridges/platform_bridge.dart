@@ -27,7 +27,7 @@ external dynamic nomoGetDeviceName();
 external dynamic nomoInstallWebOn(InstallWebonArguments args);
 
 @JS()
-external dynamic nomoRemoveWebOn(RemoveWebonArguments args);
+external dynamic nomoUninstallWebOn(RemoveWebonArguments args);
 
 @JS()
 external dynamic isFallbackModeActive();
@@ -175,7 +175,7 @@ class PlatformBridge {
 
   static Future<void> removeWebOn(RemoveWebonArguments arguments) async {
     try {
-      final jsinstallWebonPromise = nomoRemoveWebOn(arguments);
+      final jsinstallWebonPromise = nomoUninstallWebOn(arguments);
 
       final futureGetDeviceNames = promiseToFuture(jsinstallWebonPromise);
       await futureGetDeviceNames;

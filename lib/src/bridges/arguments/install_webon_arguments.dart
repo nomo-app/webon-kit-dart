@@ -13,6 +13,6 @@ class InstallWebonArguments {
 @JS()
 @anonymous
 class RemoveWebonArguments {
-  external String get deeplink;
-  external factory RemoveWebonArguments({String deeplink});
+  external String get webon_url;
+  external factory RemoveWebonArguments({String webon_url});
 }
