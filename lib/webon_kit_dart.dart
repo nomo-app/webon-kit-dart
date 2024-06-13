@@ -220,7 +220,7 @@ class WebonKitDart {
 
   static Future<void> removeWebOn({required String link}) async {
     final args = RemoveWebonArguments(webon_url: link);
-    await PlatformBridge.removeWebOn(args);
+    await PlatformBridge.uninstallWebOn(args);
   }
 
   // set the colors of the Nomo App Theme

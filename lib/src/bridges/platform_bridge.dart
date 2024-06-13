@@ -173,7 +173,7 @@ class PlatformBridge {
     }
   }
 
-  static Future<void> removeWebOn(RemoveWebonArguments arguments) async {
+  static Future<void> uninstallWebOn(RemoveWebonArguments arguments) async {
     try {
       final jsinstallWebonPromise = nomoUninstallWebOn(arguments);
 
