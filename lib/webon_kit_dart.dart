@@ -218,6 +218,11 @@ class WebonKitDart {
     return PlatformBridge.installWebOn(args);
   }
 
+  static Future<void> removeWebOn({required String link}) async {
+    final args = RemoveWebonArguments(deeplink: link);
+    await PlatformBridge.removeWebOn(args);
+  }
+
   // set the colors of the Nomo App Theme
   static Future<dynamic> setColors(NomoColors colors) async {
     return await ThemeBridge.setColors(colors);

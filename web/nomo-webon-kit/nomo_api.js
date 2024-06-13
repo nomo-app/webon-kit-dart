@@ -28,6 +28,7 @@ export const nomo = {
     launchWebOn: multi.nomoLaunchWebOn,
     launchUrlAsWebOn: multi.nomoLaunchUrlAsWebOn,
     installWebOn: multi.nomoInstallWebOn,
+    nomoRemoveWebOn: multi.nomoRemoveWebOn,
     installUrlAsWebOn: multi.nomoInstallUrlAsWebOn,
     uninstallWebOn: multi.nomoUninstallWebOn,
     getInstalledWebOns: multi.nomoGetInstalledWebOns,

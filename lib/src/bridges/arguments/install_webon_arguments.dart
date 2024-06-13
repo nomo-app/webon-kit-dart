@@ -9,3 +9,10 @@ class InstallWebonArguments {
   external factory InstallWebonArguments(
       {String deeplink, bool skipPermissionDialog, bool navigateBack});
 }
+
+@JS()
+@anonymous
+class RemoveWebonArguments {
+  external String get deeplink;
+  external factory RemoveWebonArguments({String deeplink});
+}
