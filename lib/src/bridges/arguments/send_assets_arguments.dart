@@ -1,4 +1,4 @@
-import 'package:js/js.dart';
+import 'dart:js_interop';
 import 'package:webon_kit_dart/src/bridges/arguments/asset_arguments.dart';
 
 @JS()

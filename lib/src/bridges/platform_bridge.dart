@@ -1,7 +1,7 @@
 import 'dart:js_util';
 
 import 'package:flutter/foundation.dart';
-import 'package:js/js.dart';
+import 'dart:js_interop';
 import 'package:webon_kit_dart/src/bridges/arguments/install_webon_arguments.dart';
 import 'package:webon_kit_dart/src/models/nomo_manifest.dart';
 import 'package:webon_kit_dart/src/models/notification_model.dart';

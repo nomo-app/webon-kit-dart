@@ -1,7 +1,7 @@
 import 'dart:js_util';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
-import 'package:js/js.dart';
+import 'dart:js_interop';
 import 'package:webon_kit_dart/src/models/theme/sub/nomo_colors.dart';
 // import 'package:nomo_ui_kit/theme/sub/nomo_color_theme.dart';
 import 'package:webon_kit_dart/webon_kit_dart.dart';

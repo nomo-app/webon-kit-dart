@@ -1,9 +1,9 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'dart:convert';
-import 'package:js/js.dart';
-import 'package:js/js_util.dart';
+import 'dart:js_interop';
 import 'package:webon_kit_dart/src/models/user_matrix.dart';
+import 'package:webon_kit_dart/src/utils/js_utils.dart';
 
 @JS()
 external dynamic nomoLogIntoChat();

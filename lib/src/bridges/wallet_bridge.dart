@@ -1,7 +1,7 @@
-import 'package:js/js_util.dart';
-import 'package:js/js.dart';
+import 'dart:js_interop';
 import 'package:webon_kit_dart/src/bridges/arguments/evm_message_arguments.dart';
 import 'package:webon_kit_dart/src/models/wallet_info.dart';
+import 'package:webon_kit_dart/src/utils/js_utils.dart';
 import 'package:webon_kit_dart/webon_kit_dart.dart';
 import 'package:webon_kit_dart/src/bridges/arguments/callback_arguments.dart';
 

@@ -1,6 +1,6 @@
 import 'dart:js_util';
 
-import 'package:js/js.dart';
+import 'dart:js_interop';
 import 'package:webon_kit_dart/src/bridges/arguments/auth_message_arguments.dart';
 
 @JS()
