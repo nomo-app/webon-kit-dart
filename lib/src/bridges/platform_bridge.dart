@@ -1,11 +1,10 @@
-import 'dart:js_util';
-
 import 'package:flutter/foundation.dart';
 import 'dart:js_interop';
 import 'package:webon_kit_dart/src/bridges/arguments/install_webon_arguments.dart';
 import 'package:webon_kit_dart/src/models/nomo_manifest.dart';
 import 'package:webon_kit_dart/src/models/notification_model.dart';
 import 'package:webon_kit_dart/src/models/platform_infos.dart';
+import 'package:webon_kit_dart/src/utils/js_utils.dart';
 import 'package:webon_kit_dart/webon_kit_dart.dart';
 
 @JS()

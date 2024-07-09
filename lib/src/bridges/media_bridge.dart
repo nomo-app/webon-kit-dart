@@ -1,6 +1,7 @@
-import 'dart:js_util';
 import 'package:flutter/foundation.dart';
 import 'dart:js_interop';
+
+import 'package:webon_kit_dart/src/utils/js_utils.dart';
 
 @JS()
 external dynamic nomoQrScan();

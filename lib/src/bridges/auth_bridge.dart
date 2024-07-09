@@ -1,7 +1,6 @@
-import 'dart:js_util';
-
 import 'dart:js_interop';
 import 'package:webon_kit_dart/src/bridges/arguments/auth_message_arguments.dart';
+import 'package:webon_kit_dart/src/utils/js_utils.dart';
 
 @JS()
 external dynamic nomoSignAuthMessage(AuthMessageArguments args);
