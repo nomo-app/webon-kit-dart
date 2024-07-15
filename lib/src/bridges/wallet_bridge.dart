@@ -14,6 +14,7 @@ extension type SignEvmArgs._(JSObject o) implements JSObject {
 
 extension type SignEvmResult._(JSObject o) implements JSObject {
   external String sigHex;
+  external String txHex;
 }
 
 class WalletBridge {
@@ -29,7 +30,8 @@ class WalletBridge {
       final args = SignEvmArgs(messageHex: unsignedTxRaw);
       final promise = nomoSignEvmTransaction(args);
       final result = await promise.toDart;
-      return result.sigHex;
+
+      return result.txHex;
     } catch (e, s) {
       print('Error signing transaction: $e');
       print('Stacktrace: $s');
