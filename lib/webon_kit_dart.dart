@@ -15,4 +15,10 @@ class WebonKitDart {
   static Future<String> signTransaction(String unsignedTxRaw) async {
     return await WalletBridge.signTransaction(unsignedTxRaw);
   }
+
+  /// Returns all assets available in the Nomo App
+  /// Returns a list of [JSAsset] objects
+  static Future<List<Asset>> getAllAssets() async {
+    return await WalletBridge.getAllAssets();
+  }
 }
