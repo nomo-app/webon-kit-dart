@@ -21,4 +21,8 @@ class WebonKitDart {
   static Future<List<Asset>> getAllAssets() async {
     return await WalletBridge.getAllAssets();
   }
+
+  static bool isFallBackMode() {
+    return WalletBridge.fallbackModeActive();
+  }
 }

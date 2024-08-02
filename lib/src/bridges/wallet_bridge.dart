@@ -11,6 +11,9 @@ external JSPromise<SignEvmResult> nomoSignEvmTransaction(JSAny args);
 @JS()
 external JSPromise<GetAllAssetsResult> nomoGetAllAssets();
 
+@JS()
+external JSBoolean isFallbackModeActive();
+
 extension type GetAllAssetsResult._(JSObject o) implements JSObject {
   external JSArray<JSObject> assets;
 }
@@ -70,6 +73,10 @@ class WalletBridge {
         );
       },
     ).toList();
+  }
+
+  static bool fallbackModeActive() {
+    return isFallbackModeActive().toDart;
   }
 }
 
