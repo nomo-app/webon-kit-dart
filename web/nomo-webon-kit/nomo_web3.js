@@ -93,6 +93,7 @@ export async function nomoGetEvmAddress() {
  * Returns blockchain-addresses of the NOMO-user.
  */
 export async function nomoGetWalletAddresses() {
+  console.log("NOMO GET WALLET ADDRESSES");
   if (isFallbackModeActive()) {
     return {
       walletAddresses: {
