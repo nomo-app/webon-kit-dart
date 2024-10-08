@@ -2,6 +2,8 @@ library webon_kit_dart;
 
 import 'package:webon_kit_dart/src/bridges/wallet_bridge.dart';
 
+export 'src/bridges/metamask_bridge.dart';
+
 class WebonKitDart {
   /// Returns the public EVM Address of the Nomo App
   /// If Webon is not launched within the Nomo App, returns a fallback-mode address.
