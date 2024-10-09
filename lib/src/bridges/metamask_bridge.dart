@@ -70,6 +70,11 @@ class MetamaskConnection {
 
   /// Checks if the user is already connected to MetaMask and sets the current account.
   void init() async {
+    if (ethereum == null) {
+      initCompleter.complete();
+      return;
+    }
+
     final accounts = await ethAccounts();
     chainId = await eth_chainId();
     currentAccount = accounts.isEmpty ? null : accounts[0];
@@ -86,6 +91,7 @@ class MetamaskConnection {
 
   /// Prompts the user to connect their MetaMask wallet and sets the current account.
   Future<void> connect() async {
+    if (ethereum == null) return;
     if (isConnected) return;
     final accounts = await requestAccounts();
     currentAccount = accounts.isEmpty ? null : accounts[0];
