@@ -25,8 +25,7 @@ extension type EthereumRequestArgs._(JSObject _) implements JSObject {
 }
 
 class MetamaskConnection {
-  final ValueNotifier<String?> currentAccountNotifier =
-      ValueNotifier<String?>(null);
+  final ValueNotifier<String?> currentAccountNotifier;
   final ValueNotifier<int> chainIdNotifier = ValueNotifier(-1);
 
   String? get currentAccount => currentAccountNotifier.value;
@@ -51,7 +50,8 @@ class MetamaskConnection {
 
   MetamaskConnection({
     this.defaultChain,
-  }) {
+    ValueNotifier<String?>? accoutNotifier,
+  }) : currentAccountNotifier = accoutNotifier ?? ValueNotifier(null) {
     init();
   }
 
