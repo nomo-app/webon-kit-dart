@@ -207,7 +207,6 @@ class MetamaskConnection {
 
       return result.toDart;
     } on MetaMaskError catch (e) {
-      print(e);
       rethrow;
     }
   }
