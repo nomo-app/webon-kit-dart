@@ -26,17 +26,17 @@ extension type EthereumRequestArgs._(JSObject _) implements JSObject {
 
 class MetamaskConnection {
   final ValueNotifier<String?> currentAccountNotifier;
-  final ValueNotifier<int> chainIdNotifier = ValueNotifier(-1);
+  final ValueNotifier<int?> chainIdNotifier = ValueNotifier(null);
 
   String? get currentAccount => currentAccountNotifier.value;
 
-  int get chainId => chainIdNotifier.value;
+  int? get chainId => chainIdNotifier.value;
 
   set currentAccount(String? value) {
     currentAccountNotifier.value = value;
   }
 
-  set chainId(int value) {
+  set chainId(int? value) {
     chainIdNotifier.value = value;
   }
 
