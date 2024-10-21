@@ -51,8 +51,9 @@ class MetamaskConnection {
   MetamaskConnection({
     this.defaultChain,
     ValueNotifier<String?>? accoutNotifier,
+    bool autoConnect = true,
   }) : currentAccountNotifier = accoutNotifier ?? ValueNotifier(null) {
-    init();
+    init(autoConnect);
   }
 
   void onAccountsChanged(List<String> accounts) {
@@ -69,18 +70,22 @@ class MetamaskConnection {
   }
 
   /// Checks if the user is already connected to MetaMask and sets the current account.
-  void init() async {
+  void init(bool autoConnect) async {
     if (ethereum == null) {
       initCompleter.complete();
       return;
     }
 
-    final accounts = await ethAccounts();
     chainId = await eth_chainId();
-    currentAccount = accounts.isEmpty ? null : accounts[0];
 
-    if (defaultChain != null && chainId != defaultChain!.chainId) {
-      switchChain(defaultChain!);
+    if (autoConnect) {
+      final accounts = await ethAccounts();
+
+      currentAccount = accounts.isEmpty ? null : accounts[0];
+
+      if (defaultChain != null && chainId != defaultChain!.chainId) {
+        switchChain(defaultChain!);
+      }
     }
 
     initCompleter.complete();
