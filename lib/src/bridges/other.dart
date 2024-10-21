@@ -11,7 +11,11 @@ extension type LocalStorage._(JSObject _) implements JSObject {
 
 class WebLocalStorage {
   static String? getItem(String key) {
-    return localStorage.getItem(key);
+    final item = localStorage.getItem(key);
+    if (item == null || item == 'undefined' || item == '' || item == 'null') {
+      return null;
+    }
+    return item;
   }
 
   static void setItem(String key, String value) {
