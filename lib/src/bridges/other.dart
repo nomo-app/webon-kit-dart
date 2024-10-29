@@ -3,10 +3,18 @@ import 'dart:js_interop';
 @JS('localStorage')
 external LocalStorage get localStorage;
 
+// window.navigator.language
+@JS('navigator.language')
+external String get navigatorLanguage;
+
 extension type LocalStorage._(JSObject _) implements JSObject {
   external String? getItem(String key);
   external void setItem(String key, String value);
   external void removeItem(String key);
+}
+
+class WebLocale {
+  static String get language => navigatorLanguage;
 }
 
 class WebLocalStorage {
