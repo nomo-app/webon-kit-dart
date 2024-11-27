@@ -1,5 +1,6 @@
 library webon_kit_dart;
 
+import 'package:webon_kit_dart/src/bridges/other.dart';
 import 'package:webon_kit_dart/src/bridges/wallet_bridge.dart';
 
 export 'src/bridges/metamask_bridge.dart';
@@ -27,5 +28,9 @@ class WebonKitDart {
 
   static bool isFallBackMode() {
     return WalletBridge.fallbackModeActive();
+  }
+
+  static void setNomoColors(Map<String, dynamic> args) async {
+    NomoColorsBrige.setNomoColors(args);
   }
 }

@@ -7,6 +7,9 @@ external LocalStorage get localStorage;
 @JS('navigator.language')
 external String get navigatorLanguage;
 
+@JS('setNomoColors')
+external void jsSetNomoColors(JSAny args);
+
 extension type LocalStorage._(JSObject _) implements JSObject {
   external String? getItem(String key);
   external void setItem(String key, String value);
@@ -32,5 +35,17 @@ class WebLocalStorage {
 
   static void removeItem(String key) {
     localStorage.removeItem(key);
+  }
+}
+
+class NomoColorsBrige {
+  static void setNomoColors(Map<String, dynamic> args) {
+    final jsArgs = args.jsify();
+    if (jsArgs == null) {
+      return;
+    }
+    jsSetNomoColors(jsArgs);
+
+    print("Setting colors: $args");
   }
 }
