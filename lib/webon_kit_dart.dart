@@ -34,3 +34,8 @@ class WebonKitDart {
     NomoColorsBrige.setNomoColors(args);
   }
 }
+
+enum BrowserWalletConnection {
+  connected,
+  noWallet,
+}

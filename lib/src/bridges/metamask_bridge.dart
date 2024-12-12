@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:js_interop';
 import 'package:flutter/foundation.dart';
+import 'package:webon_kit_dart/webon_kit_dart.dart';
 
 @JS('ethereum')
 external JSObject? get ethereum;
@@ -95,11 +96,12 @@ class MetamaskConnection {
   }
 
   /// Prompts the user to connect their MetaMask wallet and sets the current account.
-  Future<void> connect() async {
-    if (ethereum == null) return;
-    if (isConnected) return;
+  Future<BrowserWalletConnection> connect() async {
+    if (ethereum == null) return BrowserWalletConnection.noWallet;
+    if (isConnected) return BrowserWalletConnection.connected;
     final accounts = await requestAccounts();
     currentAccount = accounts.isEmpty ? null : accounts[0];
+    return BrowserWalletConnection.connected;
   }
 
   /// Registers an event handler for a specific event.
