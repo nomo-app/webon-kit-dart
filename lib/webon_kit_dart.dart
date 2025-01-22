@@ -33,6 +33,20 @@ class WebonKitDart {
   static void setNomoColors(Map<String, dynamic> args) async {
     NomoColorsBrige.setNomoColors(args);
   }
+
+  static void installWebon({
+    required String deeplink,
+    bool? backgroundInstall,
+    bool? navigateBack,
+    bool? skipPermissionDialog,
+  }) async {
+    await NomoMultiBrige.installWebon(
+      deeplink: deeplink,
+      backgroundInstall: backgroundInstall,
+      navigateBack: navigateBack,
+      skipPermissionDialog: skipPermissionDialog,
+    );
+  }
 }
 
 enum BrowserWalletConnection {
